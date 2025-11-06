@@ -1,0 +1,233 @@
+@{
+    ViewData["Title"] = "Quản lý Ảnh";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>📷 Quản lý Ảnh</h2>
+                <a href="/Profile/Index" class="btn btn-outline-secondary">← Quay lại Hồ sơ</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- Upload Photo -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Tải ảnh lên</h5>
+                </div>
+                <div class="card-body">
+                    <form id="uploadForm">
+                        <div class="mb-3">
+                            <label for="photoFile" class="form-label">Chọn ảnh</label>
+                            <input type="file" class="form-control" id="photoFile" accept="image/*" required onchange="previewImage(event)">
+                            <div id="imagePreview" class="mt-2" style="display: none;">
+                                <img id="previewImg" src="" alt="Preview" class="img-thumbnail" style="max-height: 200px;">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="photoType" class="form-label">Loại ảnh (tùy chọn)</label>
+                            <input type="text" class="form-control" id="photoType" placeholder="Ví dụ: Profile, Cover, etc.">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tải lên</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Photos Grid -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Ảnh của tôi</h5>
+                </div>
+                <div class="card-body">
+                    <div id="photosContainer">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        let myUserId = null;
+        
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Get current user ID
+        async function getMyUserId() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                myUserId = user.id;
+                loadPhotos();
+            } catch (error) {
+                console.error('Error getting user ID:', error);
+            }
+        }
+        
+        // Load photos
+        async function loadPhotos() {
+            if (!myUserId) return;
+            
+            const container = document.getElementById('photosContainer');
+            container.innerHTML = '<div class="text-center"><div class="spinner-border"></div></div>';
+            
+            try {
+                const photos = await ApiService.getPhotosByUser(myUserId);
+                
+                if (photos.length === 0) {
+                    container.innerHTML = '<div class="alert alert-info">Chưa có ảnh nào. Hãy tải ảnh lên!</div>';
+                    return;
+                }
+                
+                container.innerHTML = `
+                    <div class="row">
+                        ${photos.map(photo => `
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <img src="${photo.url}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Photo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'200\\'%3E%3Crect fill=\\'%23ddd\\' width=\\'200\\' height=\\'200\\'/%3E%3Ctext fill=\\'%23999\\' font-family=\\'sans-serif\\' font-size=\\'14\\' x=\\'50%25\\' y=\\'50%25\\' text-anchor=\\'middle\\' dominant-baseline=\\'middle\\'%3EẢnh%3C/text%3E%3C/svg%3E';">
+                                    <div class="card-body">
+                                        ${photo.isMain ? '<span class="badge bg-success mb-2">Ảnh chính</span>' : ''}
+                                        <div class="btn-group w-100" role="group">
+                                            ${!photo.isMain ? `
+                                                <button class="btn btn-sm btn-outline-primary" onclick="setMainPhoto('${photo.id}')">
+                                                    Đặt làm ảnh chính
+                                                </button>
+                                            ` : ''}
+                                            <button class="btn btn-sm btn-outline-danger" onclick="deletePhoto('${photo.id}')">
+                                                Xóa
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
+            }
+        }
+        
+        // Upload photo
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const file = document.getElementById('photoFile').files[0];
+            const photoType = document.getElementById('photoType').value.trim() || null;
+            
+            if (!file) return;
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang tải...';
+            
+            try {
+                const response = await ApiService.uploadPhoto(file, photoType);
+                showAlert('success', 'Tải ảnh lên thành công!');
+                document.getElementById('uploadForm').reset();
+                document.getElementById('imagePreview').style.display = 'none';
+                
+                // Reload photos immediately
+                await loadPhotos();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Tải lên';
+            }
+        });
+        
+        // Set main photo
+        async function setMainPhoto(photoId) {
+            if (!confirm('Đặt ảnh này làm ảnh chính?')) return;
+            
+            try {
+                await ApiService.setMainPhoto(photoId);
+                showAlert('success', 'Đã đặt làm ảnh chính!');
+                loadPhotos();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        // Delete photo
+        async function deletePhoto(photoId) {
+            if (!confirm('Bạn có chắc muốn xóa ảnh này?')) return;
+            
+            try {
+                await ApiService.deletePhoto(photoId);
+                showAlert('success', 'Đã xóa ảnh!');
+                loadPhotos();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+        
+        // Preview image before upload
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('imagePreview');
+            const previewImg = document.getElementById('previewImg');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+        
+        // Initialize
+        getMyUserId();
+    </script>
+}
+

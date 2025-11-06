@@ -1,0 +1,88 @@
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Đăng nhập</h2>
+                    
+                    <div id="alertContainer"></div>
+                    
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <a href="/Auth/ForgotPassword" class="text-decoration-none">Quên mật khẩu?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 mb-3">Đăng nhập</button>
+                        
+                        <div class="text-center">
+                            <span>Chưa có tài khoản? </span>
+                            <a href="/Auth/Register" class="text-decoration-none">Đăng ký ngay</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const alertContainer = document.getElementById('alertContainer');
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang đăng nhập...';
+            alertContainer.innerHTML = '';
+            
+            try {
+                const response = await ApiService.login(email, password);
+                
+                // Show success message
+                alertContainer.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Đăng nhập thành công! Đang chuyển hướng...
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                // Redirect to home
+                setTimeout(() => {
+                    window.location.href = '/Home/Index';
+                }, 1000);
+                
+            } catch (error) {
+                alertContainer.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        ${error.message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Đăng nhập';
+            }
+        });
+    </script>
+}
+

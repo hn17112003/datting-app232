@@ -1,0 +1,314 @@
+@{
+    ViewData["Title"] = "Quản lý Users";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>👥 Quản lý Người dùng</h2>
+                <a href="/Admin/Index" class="btn btn-outline-secondary">← Quay lại Dashboard</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- Filters and Search -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm theo email...">
+        </div>
+        <div class="col-md-3">
+            <select class="form-select" id="statusFilter">
+                <option value="">Tất cả trạng thái</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Hidden">Hidden</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary w-100" onclick="loadUsers()">Làm mới</button>
+        </div>
+    </div>
+    
+    <!-- Users Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div id="usersContainer">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pagination -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <nav>
+                <ul class="pagination justify-content-center" id="pagination">
+                    <!-- Pagination will be generated here -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Ban User Modal -->
+<div class="modal fade" id="banUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận khóa tài khoản</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc muốn khóa tài khoản này?</p>
+                <p class="text-muted"><strong id="banUserEmail"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger" id="confirmBanBtn">Khóa tài khoản</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Unban User Modal -->
+<div class="modal fade" id="unbanUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận mở khóa tài khoản</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc muốn mở khóa tài khoản này?</p>
+                <p class="text-muted"><strong id="unbanUserEmail"></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-success" id="confirmUnbanBtn">Mở khóa tài khoản</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script src="~/js/adminHelper.js"></script>
+    <script>
+        let currentPage = 0;
+        const pageSize = 50;
+        let allUsers = [];
+        let filteredUsers = [];
+        let banUserId = null;
+        let unbanUserId = null;
+        
+        // Check admin access
+        document.addEventListener('DOMContentLoaded', async function() {
+            const hasAccess = await AdminHelper.checkAdminAccess();
+            if (!hasAccess) return;
+            
+            loadUsers();
+            
+            // Search input
+            document.getElementById('searchInput').addEventListener('input', filterUsers);
+            document.getElementById('statusFilter').addEventListener('change', filterUsers);
+            
+            // Ban user modal
+            const banModal = new bootstrap.Modal(document.getElementById('banUserModal'));
+            document.getElementById('confirmBanBtn').addEventListener('click', async function() {
+                if (banUserId) {
+                    await banUser(banUserId);
+                    banModal.hide();
+                }
+            });
+            
+            // Unban user modal
+            const unbanModal = new bootstrap.Modal(document.getElementById('unbanUserModal'));
+            document.getElementById('confirmUnbanBtn').addEventListener('click', async function() {
+                if (unbanUserId) {
+                    await unbanUser(unbanUserId);
+                    unbanModal.hide();
+                }
+            });
+        });
+        
+        // Load users
+        async function loadUsers() {
+            const container = document.getElementById('usersContainer');
+            container.innerHTML = '<div class="text-center"><div class="spinner-border"></div></div>';
+            
+            try {
+                allUsers = await ApiService.getAllUsers(0, 200);
+                filteredUsers = allUsers;
+                currentPage = 0;
+                displayUsers();
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
+            }
+        }
+        
+        // Filter users
+        function filterUsers() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const status = document.getElementById('statusFilter').value;
+            
+            filteredUsers = allUsers.filter(user => {
+                const matchSearch = !search || user.email.toLowerCase().includes(search);
+                const matchStatus = !status || user.status === status;
+                return matchSearch && matchStatus;
+            });
+            
+            currentPage = 0;
+            displayUsers();
+        }
+        
+        // Display users
+        function displayUsers() {
+            const container = document.getElementById('usersContainer');
+            const start = currentPage * pageSize;
+            const end = start + pageSize;
+            const pageUsers = filteredUsers.slice(start, end);
+            
+            if (pageUsers.length === 0) {
+                container.innerHTML = '<div class="alert alert-info">Không tìm thấy người dùng nào</div>';
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+            
+            container.innerHTML = `
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Trạng thái</th>
+                                <th>Xác thực</th>
+                                <th>Ngày tạo</th>
+                                <th>Hoạt động lần cuối</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${pageUsers.map(user => `
+                                <tr>
+                                    <td>${user.email}</td>
+                                    <td>${AdminHelper.getStatusBadge(user.status)}</td>
+                                    <td>${AdminHelper.getVerifiedBadge(user.isVerified)}</td>
+                                    <td>${AdminHelper.formatDate(user.createdAt)}</td>
+                                    <td>${AdminHelper.formatDate(user.lastActive)}</td>
+                                    <td>
+                                        ${user.status !== 'Inactive' ? `
+                                            <button class="btn btn-sm btn-danger" onclick="showBanModal('${user.id}', '${user.email}')">
+                                                Khóa
+                                            </button>
+                                        ` : `
+                                            <button class="btn btn-sm btn-success" onclick="showUnbanModal('${user.id}', '${user.email}')">
+                                                Mở khóa
+                                            </button>
+                                        `}
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-2">
+                    <small class="text-muted">Hiển thị ${start + 1}-${Math.min(end, filteredUsers.length)} trong tổng số ${filteredUsers.length} người dùng</small>
+                </div>
+            `;
+            
+            // Pagination
+            const totalPages = Math.ceil(filteredUsers.length / pageSize);
+            let paginationHTML = '';
+            
+            if (totalPages > 1) {
+                paginationHTML += `
+                    <li class="page-item ${currentPage === 0 ? 'disabled' : ''}">
+                        <a class="page-link" href="#" onclick="changePage(${currentPage - 1}); return false;">Trước</a>
+                    </li>
+                `;
+                
+                for (let i = 0; i < totalPages; i++) {
+                    paginationHTML += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="changePage(${i}); return false;">${i + 1}</a>
+                        </li>
+                    `;
+                }
+                
+                paginationHTML += `
+                    <li class="page-item ${currentPage === totalPages - 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="#" onclick="changePage(${currentPage + 1}); return false;">Sau</a>
+                    </li>
+                `;
+            }
+            
+            document.getElementById('pagination').innerHTML = paginationHTML;
+        }
+        
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredUsers.length / pageSize);
+            if (page >= 0 && page < totalPages) {
+                currentPage = page;
+                displayUsers();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        
+        function showBanModal(userId, email) {
+            banUserId = userId;
+            document.getElementById('banUserEmail').textContent = email;
+            const modal = new bootstrap.Modal(document.getElementById('banUserModal'));
+            modal.show();
+        }
+        
+        function showUnbanModal(userId, email) {
+            unbanUserId = userId;
+            document.getElementById('unbanUserEmail').textContent = email;
+            const modal = new bootstrap.Modal(document.getElementById('unbanUserModal'));
+            modal.show();
+        }
+        
+        async function banUser(userId) {
+            try {
+                const response = await ApiService.banUser(userId);
+                showAlert('success', response.message || 'Đã khóa tài khoản thành công');
+                loadUsers();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        async function unbanUser(userId) {
+            try {
+                const response = await ApiService.unbanUser(userId);
+                showAlert('success', response.message || 'Đã mở khóa tài khoản thành công');
+                loadUsers();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+    </script>
+}
+

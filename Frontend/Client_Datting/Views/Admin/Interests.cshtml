@@ -1,0 +1,145 @@
+@{
+    ViewData["Title"] = "Quản lý Sở thích";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>🎯 Quản lý Sở thích</h2>
+                <a href="/Admin/Index" class="btn btn-outline-secondary">← Quay lại Dashboard</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- Add New Interest -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Thêm sở thích mới</h5>
+                </div>
+                <div class="card-body">
+                    <form id="addInterestForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="interestName" placeholder="Nhập tên sở thích..." required>
+                            <button type="submit" class="btn btn-primary">Thêm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Interests List -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Danh sách sở thích</h5>
+                    <button class="btn btn-sm btn-outline-primary" onclick="loadInterests()">Làm mới</button>
+                </div>
+                <div class="card-body">
+                    <div id="interestsContainer">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script src="~/js/adminHelper.js"></script>
+    <script>
+        // Check admin access
+        document.addEventListener('DOMContentLoaded', async function() {
+            const hasAccess = await AdminHelper.checkAdminAccess();
+            if (!hasAccess) return;
+            
+            loadInterests();
+            
+            // Add interest form
+            document.getElementById('addInterestForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const name = document.getElementById('interestName').value.trim();
+                if (!name) return;
+                
+                await addInterest(name);
+            });
+        });
+        
+        // Load interests
+        async function loadInterests() {
+            const container = document.getElementById('interestsContainer');
+            container.innerHTML = '<div class="text-center"><div class="spinner-border"></div></div>';
+            
+            try {
+                const interests = await ApiService.getAllInterests();
+                
+                if (interests.length === 0) {
+                    container.innerHTML = '<div class="alert alert-info">Chưa có sở thích nào</div>';
+                    return;
+                }
+                
+                container.innerHTML = `
+                    <div class="row">
+                        ${interests.map(interest => `
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title mb-0">${interest.name}</h6>
+                                        <small class="text-muted">ID: ${interest.id}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="mt-3">
+                        <small class="text-muted">Tổng số: ${interests.length} sở thích</small>
+                    </div>
+                `;
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
+            }
+        }
+        
+        // Add interest
+        async function addInterest(name) {
+            const submitBtn = document.querySelector('#addInterestForm button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang thêm...';
+            
+            try {
+                const response = await ApiService.createInterest(name);
+                showAlert('success', 'Đã thêm sở thích thành công!');
+                document.getElementById('interestName').value = '';
+                loadInterests();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Thêm';
+            }
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+    </script>
+}
+

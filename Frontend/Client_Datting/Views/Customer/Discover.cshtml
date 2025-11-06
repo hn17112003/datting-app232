@@ -1,0 +1,192 @@
+@{
+    ViewData["Title"] = "Khám phá";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>🔍 Khám phá</h2>
+                <div>
+                    <a href="/Customer/Matches" class="btn btn-outline-primary me-2">❤️ Matches</a>
+                    <a href="/Customer/Messages" class="btn btn-outline-primary">💬 Tin nhắn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- User Card -->
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div id="userCardContainer">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        let currentUsers = [];
+        let currentIndex = 0;
+        
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Load recommendations
+        async function loadRecommendations() {
+            try {
+                currentUsers = await ApiService.getRecommendations(50);
+                currentIndex = 0;
+                displayCurrentUser();
+            } catch (error) {
+                document.getElementById('userCardContainer').innerHTML = `
+                    <div class="alert alert-danger">
+                        Không thể tải gợi ý: ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        // Display current user
+        async function displayCurrentUser() {
+            const container = document.getElementById('userCardContainer');
+            
+            if (currentIndex >= currentUsers.length) {
+                container.innerHTML = `
+                    <div class="card">
+                        <div class="card-body text-center p-5">
+                            <h4>Không còn gợi ý nào</h4>
+                            <p class="text-muted">Hãy thử lại sau hoặc hoàn thiện hồ sơ của bạn!</p>
+                            <button class="btn btn-primary" onclick="loadRecommendations()">Tải lại</button>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            const user = currentUsers[currentIndex];
+            
+            // Get profile
+            let profile = null;
+            try {
+                profile = await ApiService.getProfileByUserId(user.userId);
+            } catch (error) {
+                console.error('Không thể load profile:', error);
+            }
+            
+            // Get photos
+            let photos = [];
+            try {
+                photos = await ApiService.getPhotosByUser(user.userId);
+            } catch (error) {
+                console.error('Không thể load photos:', error);
+            }
+            
+            const mainPhoto = photos.find(p => p.isMain) || photos[0];
+            const age = profile?.dateOfBirth ? calculateAge(profile.dateOfBirth) : null;
+            
+            container.innerHTML = `
+                <div class="card shadow-lg">
+                    ${mainPhoto ? `
+                        <img src="${mainPhoto.url}" class="card-img-top" style="height: 400px; object-fit: cover;" alt="Profile photo" onerror="this.parentElement.innerHTML='<div class=\\'card-img-top bg-secondary d-flex align-items-center justify-content-center\\' style=\\'height: 400px;\\'><i class=\\'bi bi-person-circle\\' style=\\'font-size: 150px; color: white;\\'></i></div>';">
+                    ` : `
+                        <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 400px;">
+                            <i class="bi bi-person-circle" style="font-size: 150px; color: white;"></i>
+                        </div>
+                    `}
+                    <div class="card-body">
+                        <h3 class="card-title">${profile?.knownAs || user.knownAs || 'Chưa có tên'}</h3>
+                        <p class="card-text">
+                            ${age ? `<strong>Tuổi:</strong> ${age}<br>` : ''}
+                            ${profile?.gender ? `<strong>Giới tính:</strong> ${profile.gender}<br>` : ''}
+                            ${profile?.city || profile?.country ? `<strong>Địa điểm:</strong> ${profile.city || ''}${profile.city && profile.country ? ', ' : ''}${profile.country || ''}<br>` : ''}
+                            ${profile?.bio ? `<br>${profile.bio}` : ''}
+                        </p>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-danger btn-lg" onclick="passUser()">
+                                <i class="bi bi-x-circle"></i> Bỏ qua
+                            </button>
+                            <button class="btn btn-success btn-lg" onclick="likeUser('${user.userId}')">
+                                <i class="bi bi-heart-fill"></i> Thích
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function calculateAge(dateOfBirth) {
+            const today = new Date();
+            const birthDate = new Date(dateOfBirth);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+        
+        function passUser() {
+            currentIndex++;
+            displayCurrentUser();
+        }
+        
+        async function likeUser(userId) {
+            try {
+                const response = await ApiService.likeUser(userId);
+                showAlert('success', response.message || 'Đã thích người dùng!');
+                
+                if (response.message && response.message.includes('ghép đôi')) {
+                    setTimeout(() => {
+                        window.location.href = '/Customer/Matches';
+                    }, 1500);
+                } else {
+                    currentIndex++;
+                    displayCurrentUser();
+                }
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+        
+        // Load on page load
+        loadRecommendations();
+    </script>
+}
+

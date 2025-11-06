@@ -1,0 +1,331 @@
+{
+  "Version": 1,
+  "Hash": "xU5EUopuD9NH3stmM5lnZxhw7G0RTIocS+a8f+kWm5A=",
+  "Source": "Dating_Manager",
+  "BasePath": "_content/Dating_Manager",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Dating_Manager\\wwwroot",
+      "Source": "Dating_Manager",
+      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "BasePath": "_content/Dating_Manager",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
+      "SourceId": "Dating_Manager",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "BasePath": "_content/Dating_Manager",
+      "RelativePath": "uploads/242ea7df-fed5-4549-8263-9b1510ff51db#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "oynqssbpu1",
+      "Integrity": "0Hd2bwrzDKwVLnQIIzuhYzSYzJ6Yfr4s8kj6ctBjDdY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png"
+    },
+    {
+      "Identity": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
+      "SourceId": "Dating_Manager",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "BasePath": "_content/Dating_Manager",
+      "RelativePath": "uploads/51557f8e-d20e-4e82-8a99-b20fe5d97f49#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jsfxeq3ztx",
+      "Integrity": "zctrA9wScgenqwgaztrDWASgL9KvAWCCkWNqXI9vfLo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png"
+    },
+    {
+      "Identity": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
+      "SourceId": "Dating_Manager",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "BasePath": "_content/Dating_Manager",
+      "RelativePath": "uploads/a53ede48-b3e8-4eb1-887d-4280ae14ccb0#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "bgrzizjxan",
+      "Integrity": "RVyKZQr2RwmvmT34osJ741wHC5eYNYkggVYoXyYKXp0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "uploads/242ea7df-fed5-4549-8263-9b1510ff51db.oynqssbpu1.png",
+      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "813264"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0Hd2bwrzDKwVLnQIIzuhYzSYzJ6Yfr4s8kj6ctBjDdY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Nov 2025 19:11:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oynqssbpu1"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/242ea7df-fed5-4549-8263-9b1510ff51db.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0Hd2bwrzDKwVLnQIIzuhYzSYzJ6Yfr4s8kj6ctBjDdY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/242ea7df-fed5-4549-8263-9b1510ff51db.png",
+      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "813264"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0Hd2bwrzDKwVLnQIIzuhYzSYzJ6Yfr4s8kj6ctBjDdY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Nov 2025 19:11:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0Hd2bwrzDKwVLnQIIzuhYzSYzJ6Yfr4s8kj6ctBjDdY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/51557f8e-d20e-4e82-8a99-b20fe5d97f49.jsfxeq3ztx.png",
+      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2927989"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zctrA9wScgenqwgaztrDWASgL9KvAWCCkWNqXI9vfLo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Nov 2025 19:11:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jsfxeq3ztx"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/51557f8e-d20e-4e82-8a99-b20fe5d97f49.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zctrA9wScgenqwgaztrDWASgL9KvAWCCkWNqXI9vfLo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
+      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2927989"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zctrA9wScgenqwgaztrDWASgL9KvAWCCkWNqXI9vfLo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Nov 2025 19:11:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zctrA9wScgenqwgaztrDWASgL9KvAWCCkWNqXI9vfLo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/a53ede48-b3e8-4eb1-887d-4280ae14ccb0.bgrzizjxan.png",
+      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1640881"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RVyKZQr2RwmvmT34osJ741wHC5eYNYkggVYoXyYKXp0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Nov 2025 19:11:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bgrzizjxan"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RVyKZQr2RwmvmT34osJ741wHC5eYNYkggVYoXyYKXp0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
+      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1640881"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RVyKZQr2RwmvmT34osJ741wHC5eYNYkggVYoXyYKXp0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Nov 2025 19:11:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-RVyKZQr2RwmvmT34osJ741wHC5eYNYkggVYoXyYKXp0="
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+@{
+    ViewData["Title"] = "Đăng nhập Admin";
+}
+
+<style>
+    .admin-login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .admin-login-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        padding: 40px;
+        max-width: 400px;
+        width: 100%;
+    }
+    
+    .admin-login-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .admin-login-header h1 {
+        color: #667eea;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    
+    .admin-login-header p {
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    .admin-login-icon {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+</style>
+
+<div class="admin-login-container">
+    <div class="admin-login-card">
+        <div class="admin-login-header">
+            <div class="admin-login-icon">⚙️</div>
+            <h1>Admin Login</h1>
+            <p>Đăng nhập vào hệ thống quản trị</p>
+        </div>
+        
+        <div id="alertContainer"></div>
+        
+        <form id="adminLoginForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required autofocus>
+            </div>
+            
+            <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 mb-3" style="background: #667eea; border: none; padding: 12px;">
+                Đăng nhập
+            </button>
+            
+            <div class="text-center">
+                <a href="/Auth/Login" class="text-decoration-none" style="color: #667eea;">← Quay lại đăng nhập thường</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const alertContainer = document.getElementById('alertContainer');
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang đăng nhập...';
+            alertContainer.innerHTML = '';
+            
+            try {
+                const response = await ApiService.login(email, password);
+                
+                // Kiểm tra role sau khi login
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                
+                if (!isAdmin) {
+                    // Nếu không phải admin, đăng xuất và báo lỗi
+                    ApiService.logout();
+                    alertContainer.innerHTML = `
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Tài khoản này không có quyền truy cập Admin Panel. Vui lòng đăng nhập bằng tài khoản Admin.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    `;
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Đăng nhập';
+                    return;
+                }
+                
+                // Show success message
+                alertContainer.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Đăng nhập thành công! Đang chuyển hướng...
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                // Redirect to admin panel
+                setTimeout(() => {
+                    window.location.href = '/Admin/Index';
+                }, 1000);
+                
+            } catch (error) {
+                alertContainer.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        ${error.message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Đăng nhập';
+            }
+        });
+    </script>
+}
+

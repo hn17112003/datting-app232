@@ -1,0 +1,186 @@
+@{
+    ViewData["Title"] = "Matches";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>❤️ Matches của tôi</h2>
+                <div>
+                    <a href="/Customer/Discover" class="btn btn-outline-primary me-2">🔍 Khám phá</a>
+                    <a href="/Customer/Messages" class="btn btn-outline-primary">💬 Tin nhắn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- Matches List -->
+    <div class="row">
+        <div class="col-12">
+            <div id="matchesContainer">
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Load matches
+        async function loadMatches() {
+            const container = document.getElementById('matchesContainer');
+            
+            try {
+                const matches = await ApiService.getMyMatches();
+                
+                if (matches.length === 0) {
+                    container.innerHTML = `
+                        <div class="card">
+                            <div class="card-body text-center p-5">
+                                <h4>Chưa có matches nào</h4>
+                                <p class="text-muted">Hãy khám phá và thích những người bạn quan tâm!</p>
+                                <a href="/Customer/Discover" class="btn btn-primary">Khám phá ngay</a>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Load profile và photos cho mỗi match
+                const matchesWithDetails = await Promise.all(matches.map(async (match) => {
+                    let profile = null;
+                    let photos = [];
+                    
+                    try {
+                        profile = await ApiService.getProfileByUserId(match.userId);
+                        photos = await ApiService.getPhotosByUser(match.userId);
+                    } catch (error) {
+                        console.error('Error loading details for user:', match.userId, error);
+                    }
+                    
+                    return { ...match, profile, photos };
+                }));
+                
+                container.innerHTML = `
+                    <div class="row">
+                        ${matchesWithDetails.map(match => {
+                            const mainPhoto = match.photos.find(p => p.isMain) || match.photos[0];
+                            const age = match.profile?.dateOfBirth ? calculateAge(match.profile.dateOfBirth) : null;
+                            
+                            return `
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 shadow-sm">
+                                        ${mainPhoto ? `
+                                            <img src="${mainPhoto.url}" class="card-img-top" style="height: 250px; object-fit: cover;" alt="Profile">
+                                        ` : `
+                                            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 250px;">
+                                                <i class="bi bi-person-circle" style="font-size: 100px; color: white;"></i>
+                                            </div>
+                                        `}
+                                        <div class="card-body">
+                                            <h5 class="card-title">${match.profile?.knownAs || match.email || 'Chưa có tên'}</h5>
+                                            <p class="card-text">
+                                                ${age ? `<small>Tuổi: ${age}</small><br>` : ''}
+                                                ${match.profile?.city ? `<small>${match.profile.city}</small>` : ''}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="d-grid gap-2">
+                                                <button class="btn btn-primary" onclick="startConversation('${match.userId}', '${match.matchId}')">
+                                                    💬 Nhắn tin
+                                                </button>
+                                                <button class="btn btn-warning" onclick="blockUser('${match.userId}')">
+                                                    🚫 Chặn
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
+            }
+        }
+        
+        function calculateAge(dateOfBirth) {
+            const today = new Date();
+            const birthDate = new Date(dateOfBirth);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+        
+        async function startConversation(userId, matchId) {
+            try {
+                // Tạo hoặc lấy conversation
+                const conversation = await ApiService.createConversation(userId);
+                // Redirect to messages
+                window.location.href = `/Customer/Messages?conversationId=${conversation.id}`;
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        async function blockUser(userId) {
+            if (!confirm('Bạn có chắc muốn chặn người dùng này? Hành động này sẽ xóa match và tin nhắn giữa hai bạn.')) return;
+            
+            try {
+                const response = await ApiService.blockUser(userId);
+                showAlert('success', response.message || 'Đã chặn người dùng!');
+                // Reload matches sau khi chặn
+                loadMatches();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+        
+        // Load on page load
+        loadMatches();
+    </script>
+}
+

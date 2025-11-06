@@ -1,0 +1,150 @@
+@{
+    ViewData["Title"] = "Người dùng đã chặn";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>🚫 Người dùng đã chặn</h2>
+                <a href="/Profile/Index" class="btn btn-outline-secondary">← Quay lại Hồ sơ</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- Blocked Users List -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Danh sách người đã chặn</h5>
+                </div>
+                <div class="card-body">
+                    <div id="blockedUsersContainer">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Load blocked users
+        async function loadBlockedUsers() {
+            const container = document.getElementById('blockedUsersContainer');
+            
+            try {
+                const blockedUsers = await ApiService.getBlockedUsers();
+                
+                if (blockedUsers.length === 0) {
+                    container.innerHTML = '<div class="alert alert-info">Bạn chưa chặn ai</div>';
+                    return;
+                }
+                
+                // Load profiles
+                const usersWithProfiles = await Promise.all(blockedUsers.map(async (user) => {
+                    let profile = null;
+                    try {
+                        profile = await ApiService.getProfileByUserId(user.id);
+                    } catch (error) {
+                        console.error('Error loading profile:', error);
+                    }
+                    return { ...user, profile };
+                }));
+                
+                container.innerHTML = `
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tên</th>
+                                    <th>Email</th>
+                                    <th>Ngày chặn</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${usersWithProfiles.map(user => `
+                                    <tr>
+                                        <td>${user.profile?.knownAs || 'Chưa có tên'}</td>
+                                        <td>${user.email}</td>
+                                        <td>${formatDate(user.createdAt)}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success" onclick="unblockUser('${user.id}', '${user.email}')">
+                                                Bỏ chặn
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
+            }
+        }
+        
+        async function unblockUser(userId, email) {
+            if (!confirm(`Bạn có chắc muốn bỏ chặn ${email}?`)) return;
+            
+            try {
+                await ApiService.unblockUser(userId);
+                showAlert('success', 'Đã bỏ chặn người dùng!');
+                loadBlockedUsers();
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            }
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleString('vi-VN');
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+        
+        // Load on page load
+        loadBlockedUsers();
+    </script>
+}
+

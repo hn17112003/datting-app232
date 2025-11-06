@@ -1,0 +1,205 @@
+@{
+    ViewData["Title"] = "Gợi ý";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">Gợi ý cho bạn</h2>
+            
+            <div id="alertContainer"></div>
+            <div id="loadingSpinner" class="text-center my-5">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Đang tải...</span>
+                </div>
+            </div>
+            
+            <div id="suggestionsContainer" class="row">
+                <!-- Suggestions will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Load suggestions
+        async function loadSuggestions() {
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const suggestionsContainer = document.getElementById('suggestionsContainer');
+            const alertContainer = document.getElementById('alertContainer');
+            
+            try {
+                const suggestions = await ApiService.getSuggestions(20);
+                loadingSpinner.style.display = 'none';
+                
+                if (suggestions.length === 0) {
+                    suggestionsContainer.innerHTML = `
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                Chưa có gợi ý nào. Hãy hoàn thiện hồ sơ của bạn để nhận được nhiều gợi ý hơn!
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Load photos for each suggestion
+                const suggestionsWithPhotos = await Promise.all(suggestions.map(async (suggestion) => {
+                    let photos = [];
+                    try {
+                        photos = await ApiService.getPhotosByUser(suggestion.userId);
+                    } catch (error) {
+                        console.error('Error loading photos:', error);
+                    }
+                    return { ...suggestion, photos };
+                }));
+                
+                suggestionsContainer.innerHTML = suggestionsWithPhotos.map(suggestion => {
+                    const mainPhoto = suggestion.photos.find(p => p.isMain) || suggestion.photos[0];
+                    return `
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                ${mainPhoto ? `
+                                    <img src="${mainPhoto.url}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Profile">
+                                ` : `
+                                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="bi bi-person-circle" style="font-size: 80px; color: white;"></i>
+                                    </div>
+                                `}
+                                <div class="card-body">
+                                    <h5 class="card-title">${suggestion.knownAs || 'Chưa có tên'}</h5>
+                                    <p class="card-text">
+                                        <strong>Giới tính:</strong> ${suggestion.gender || 'N/A'}<br>
+                                        <strong>Địa điểm:</strong> ${suggestion.city || ''}${suggestion.city && suggestion.country ? ', ' : ''}${suggestion.country || ''}
+                                    </p>
+                                    <a href="#" class="btn btn-primary btn-sm" onclick="viewProfile('${suggestion.userId}'); return false;">Xem hồ sơ</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                loadingSpinner.style.display = 'none';
+                alertContainer.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Không thể tải gợi ý: ${error.message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+            }
+        }
+        
+        async function viewProfile(userId) {
+            try {
+                // Load profile
+                const profile = await ApiService.getProfileByUserId(userId);
+                const photos = await ApiService.getPhotosByUser(userId);
+                const interests = await ApiService.getUserInterests(userId);
+                
+                const mainPhoto = photos.find(p => p.isMain) || photos[0];
+                const age = profile.dateOfBirth ? calculateAge(profile.dateOfBirth) : null;
+                
+                // Create modal to show profile
+                const modalHTML = `
+                    <div class="modal fade" id="profileModal" tabindex="-1">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Hồ sơ</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ${mainPhoto ? `
+                                        <img src="${mainPhoto.url}" class="img-fluid rounded mb-3" alt="Profile photo">
+                                    ` : ''}
+                                    <h4>${profile.knownAs || 'Chưa có tên'}</h4>
+                                    <p>
+                                        ${age ? `<strong>Tuổi:</strong> ${age}<br>` : ''}
+                                        ${profile.gender ? `<strong>Giới tính:</strong> ${profile.gender}<br>` : ''}
+                                        ${profile.city || profile.country ? `<strong>Địa điểm:</strong> ${profile.city || ''}${profile.city && profile.country ? ', ' : ''}${profile.country || ''}<br>` : ''}
+                                        ${profile.lookingForGender ? `<strong>Tìm kiếm:</strong> ${profile.lookingForGender}<br>` : ''}
+                                    </p>
+                                    ${profile.bio ? `<p><strong>Giới thiệu:</strong><br>${profile.bio}</p>` : ''}
+                                    ${interests.length > 0 ? `
+                                        <p><strong>Sở thích:</strong><br>
+                                        ${interests.map(i => `<span class="badge bg-secondary me-1">${i.name}</span>`).join('')}
+                                        </p>
+                                    ` : ''}
+                                    ${photos.length > 1 ? `
+                                        <div class="row mt-3">
+                                            ${photos.map(photo => `
+                                                <div class="col-md-3 mb-2">
+                                                    <img src="${photo.url}" class="img-thumbnail" alt="Photo">
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Remove existing modal if any
+                const existingModal = document.getElementById('profileModal');
+                if (existingModal) existingModal.remove();
+                
+                // Add modal to body
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+                
+                // Show modal
+                const modal = new bootstrap.Modal(document.getElementById('profileModal'));
+                modal.show();
+                
+                // Remove modal when hidden
+                document.getElementById('profileModal').addEventListener('hidden.bs.modal', function() {
+                    this.remove();
+                });
+                
+            } catch (error) {
+                alert('Không thể tải hồ sơ: ' + error.message);
+            }
+        }
+        
+        function calculateAge(dateOfBirth) {
+            const today = new Date();
+            const birthDate = new Date(dateOfBirth);
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+        
+        // Load suggestions on page load
+        loadSuggestions();
+    </script>
+}
+

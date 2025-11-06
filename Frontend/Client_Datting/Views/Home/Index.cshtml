@@ -1,0 +1,363 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<style>
+    /* Customer - Tông màu hồng lãng mạn */
+    .customer-hero {
+        background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffb3c1 100%);
+        border-radius: 20px;
+        padding: 60px 40px;
+        color: white;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+        margin-bottom: 40px;
+    }
+    
+    .customer-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .customer-hero .lead {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        opacity: 0.95;
+    }
+    
+    .customer-feature-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: none;
+        box-shadow: 0 5px 15px rgba(255, 107, 157, 0.1);
+        height: 100%;
+    }
+    
+    .customer-feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+    }
+    
+    .customer-feature-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .customer-btn-primary {
+        background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+        border: none;
+        padding: 15px 40px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        transition: all 0.3s;
+    }
+    
+    .customer-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        color: white;
+    }
+    
+    .customer-btn-outline {
+        background: white;
+        border: 2px solid #ff6b9d;
+        padding: 15px 40px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        color: #ff6b9d;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .customer-btn-outline:hover {
+        background: #ff6b9d;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    /* Admin - Giao diện chuyên nghiệp */
+    .admin-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        padding: 50px 40px;
+        color: white;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+    
+    .admin-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    
+    .admin-stats-card {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        border-left: 4px solid #667eea;
+        transition: transform 0.3s;
+        height: 100%;
+    }
+    
+    .admin-stats-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    
+    .admin-stats-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #667eea;
+        margin: 10px 0;
+    }
+    
+    .admin-btn-primary {
+        background: #667eea;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .admin-btn-primary:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+        color: white;
+    }
+    
+    /* Guest - Tông màu hồng lãng mạn */
+    .guest-hero {
+        background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffb3c1 100%);
+        border-radius: 20px;
+        padding: 80px 40px;
+        color: white;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+        margin-bottom: 50px;
+    }
+    
+    .guest-hero h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .guest-hero .lead {
+        font-size: 1.6rem;
+        margin-bottom: 40px;
+        opacity: 0.95;
+    }
+</style>
+
+<div id="homeContent">
+    <!-- Guest View -->
+    <div class="guest-view" style="display: none;">
+        <div class="guest-hero">
+            <h1>💕 Tìm Kiếm Tình Yêu</h1>
+            <p class="lead">Kết nối với những người phù hợp với bạn và bắt đầu hành trình tìm kiếm tình yêu</p>
+            <div class="mt-4">
+                <a class="customer-btn-primary btn me-3" href="/Auth/Login" role="button">Đăng nhập</a>
+                <a class="customer-btn-outline btn" href="/Auth/Register" role="button">Đăng ký ngay</a>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="customer-feature-card">
+                    <div class="customer-feature-icon">🔍</div>
+                    <h4 class="mb-3" style="color: #ff6b9d;">Khám phá</h4>
+                    <p class="text-muted">Tìm kiếm và khám phá những người phù hợp với sở thích và tiêu chí của bạn</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="customer-feature-card">
+                    <div class="customer-feature-icon">💬</div>
+                    <h4 class="mb-3" style="color: #ff6b9d;">Trò chuyện</h4>
+                    <p class="text-muted">Kết nối và trò chuyện với những người bạn đã match một cách tự nhiên</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="customer-feature-card">
+                    <div class="customer-feature-icon">❤️</div>
+                    <h4 class="mb-3" style="color: #ff6b9d;">Match</h4>
+                    <p class="text-muted">Tìm thấy sự tương thích và bắt đầu hành trình tình yêu mới</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Customer View -->
+    <div class="customer-view" style="display: none;">
+        <div class="customer-hero">
+            <h1>💕 Chào mừng trở lại!</h1>
+            <p class="lead">Hãy khám phá những người phù hợp với bạn và tìm kiếm tình yêu đích thực</p>
+            <div class="mt-4">
+                <a class="customer-btn-primary btn me-3" href="/Customer/Discover" role="button">🔍 Khám phá ngay</a>
+                <a class="customer-btn-outline btn" href="/Profile/Index" role="button">✏️ Quản lý hồ sơ</a>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="customer-feature-card">
+                    <div class="customer-feature-icon">🔍</div>
+                    <h4 class="mb-3" style="color: #ff6b9d;">Khám phá</h4>
+                    <p class="text-muted">Tìm kiếm những người phù hợp với bạn</p>
+                    <a href="/Customer/Discover" class="btn btn-sm" style="background: linear-gradient(135deg, #ff6b9d, #ff8fab); color: white; border: none; border-radius: 20px; padding: 8px 20px;">Khám phá →</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="customer-feature-card">
+                    <div class="customer-feature-icon">❤️</div>
+                    <h4 class="mb-3" style="color: #ff6b9d;">Matches</h4>
+                    <p class="text-muted">Xem những người đã match với bạn</p>
+                    <a href="/Customer/Matches" class="btn btn-sm" style="background: linear-gradient(135deg, #ff6b9d, #ff8fab); color: white; border: none; border-radius: 20px; padding: 8px 20px;">Xem matches →</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="customer-feature-card">
+                    <div class="customer-feature-icon">💬</div>
+                    <h4 class="mb-3" style="color: #ff6b9d;">Tin nhắn</h4>
+                    <p class="text-muted">Trò chuyện với những người bạn đã match</p>
+                    <a href="/Customer/Messages" class="btn btn-sm" style="background: linear-gradient(135deg, #ff6b9d, #ff8fab); color: white; border: none; border-radius: 20px; padding: 8px 20px;">Nhắn tin →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Admin View -->
+    <div class="admin-view" style="display: none;">
+        <div class="admin-hero">
+            <h1>⚙️ Bảng điều khiển Admin</h1>
+            <p class="lead mb-4">Quản lý hệ thống và người dùng một cách hiệu quả</p>
+            <a class="admin-btn-primary btn" href="/Admin/Index" role="button">Truy cập Admin Panel →</a>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-3 mb-4">
+                <div class="admin-stats-card">
+                    <div style="font-size: 2rem; color: #667eea;">👥</div>
+                    <div class="admin-stats-number" id="adminTotalUsers">-</div>
+                    <div style="color: #666; font-weight: 600;">Tổng người dùng</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="admin-stats-card">
+                    <div style="font-size: 2rem; color: #667eea;">❤️</div>
+                    <div class="admin-stats-number" id="adminTotalMatches">-</div>
+                    <div style="color: #666; font-weight: 600;">Tổng matches</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="admin-stats-card">
+                    <div style="font-size: 2rem; color: #667eea;">💬</div>
+                    <div class="admin-stats-number" id="adminTotalMessages">-</div>
+                    <div style="color: #666; font-weight: 600;">Tổng tin nhắn</div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="admin-stats-card">
+                    <div style="font-size: 2rem; color: #667eea;">🎯</div>
+                    <div class="admin-stats-number" id="adminTotalInterests">-</div>
+                    <div style="color: #666; font-weight: 600;">Sở thích</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">👥 Quản lý người dùng</h5>
+                        <p class="card-text">Xem, chỉnh sửa và quản lý tất cả người dùng trong hệ thống</p>
+                        <a href="/Admin/Users" class="admin-btn-primary btn btn-sm">Quản lý →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">📊 Phân tích</h5>
+                        <p class="card-text">Xem thống kê và phân tích dữ liệu hệ thống</p>
+                        <a href="/Admin/Analytics" class="admin-btn-primary btn btn-sm">Xem phân tích →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script src="~/js/auth.js"></script>
+    <script>
+        // Update welcome content based on auth state and role
+        document.addEventListener('DOMContentLoaded', async function() {
+            const isAuthenticated = ApiService.isAuthenticated();
+            const guestView = document.querySelector('.guest-view');
+            const customerView = document.querySelector('.customer-view');
+            const adminView = document.querySelector('.admin-view');
+            
+            if (!isAuthenticated) {
+                // Guest view
+                if (guestView) guestView.style.display = 'block';
+                if (customerView) customerView.style.display = 'none';
+                if (adminView) adminView.style.display = 'none';
+            } else {
+                try {
+                    const user = await ApiService.getCurrentUser();
+                    const roleName = user.roleName || '';
+                    const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                    
+                    if (isAdmin) {
+                        // Admin view
+                        if (guestView) guestView.style.display = 'none';
+                        if (customerView) customerView.style.display = 'none';
+                        if (adminView) adminView.style.display = 'block';
+                        
+                        // Load admin statistics
+                        try {
+                            const stats = await ApiService.getStatistics();
+                            if (stats) {
+                                document.getElementById('adminTotalUsers').textContent = stats.totalUsers || 0;
+                                document.getElementById('adminTotalMatches').textContent = stats.totalMatches || 0;
+                                document.getElementById('adminTotalMessages').textContent = stats.totalMessages || 0;
+                            }
+                        } catch (error) {
+                            console.error('Error loading admin stats:', error);
+                        }
+                    } else {
+                        // Customer view
+                        if (guestView) guestView.style.display = 'none';
+                        if (customerView) customerView.style.display = 'block';
+                        if (adminView) adminView.style.display = 'none';
+                    }
+                } catch (error) {
+                    console.error('Error loading user info:', error);
+                    // Default to guest view on error
+                    if (guestView) guestView.style.display = 'block';
+                    if (customerView) customerView.style.display = 'none';
+                    if (adminView) adminView.style.display = 'none';
+                }
+            }
+        });
+    </script>
+}

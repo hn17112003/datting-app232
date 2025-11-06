@@ -1,0 +1,177 @@
+@{
+    ViewData["Title"] = "Hồ sơ của tôi";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Hồ sơ của tôi</h4>
+                </div>
+                <div class="card-body">
+                    <div id="alertContainer"></div>
+                    
+                    <form id="profileForm">
+                        <div class="mb-3">
+                            <label for="knownAs" class="form-label">Tên hiển thị</label>
+                            <input type="text" class="form-control" id="knownAs" name="knownAs" placeholder="Nhập tên bạn muốn hiển thị">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="dateOfBirth" class="form-label">Ngày sinh</label>
+                                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="gender" class="form-label">Giới tính</label>
+                                <select class="form-select" id="gender" name="gender">
+                                    <option value="">Chọn giới tính</option>
+                                    <option value="Male">Nam</option>
+                                    <option value="Female">Nữ</option>
+                                    <option value="Other">Khác</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="lookingForGender" class="form-label">Tìm kiếm</label>
+                            <select class="form-select" id="lookingForGender" name="lookingForGender">
+                                <option value="">Tất cả</option>
+                                <option value="Male">Nam</option>
+                                <option value="Female">Nữ</option>
+                                <option value="Other">Khác</option>
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">Thành phố</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Nhập thành phố">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="country" class="form-label">Quốc gia</label>
+                                <input type="text" class="form-control" id="country" name="country" placeholder="Nhập quốc gia">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="bio" class="form-label">Giới thiệu về bản thân</label>
+                            <textarea class="form-control" id="bio" name="bio" rows="4" placeholder="Viết một chút về bản thân bạn..."></textarea>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Lưu hồ sơ</button>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="d-grid gap-2">
+                            <a href="/Customer/Photos" class="btn btn-outline-primary">📷 Quản lý Ảnh</a>
+                            <a href="/Customer/Interests" class="btn btn-outline-primary">🎯 Quản lý Sở thích</a>
+                            <a href="/Customer/BlockedUsers" class="btn btn-outline-secondary">🚫 Người dùng đã chặn</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Load profile data
+        async function loadProfile() {
+            try {
+                const profile = await ApiService.getMyProfile();
+                
+                document.getElementById('knownAs').value = profile.knownAs || '';
+                if (profile.dateOfBirth) {
+                    // Convert DateOnly to YYYY-MM-DD format
+                    const date = new Date(profile.dateOfBirth);
+                    document.getElementById('dateOfBirth').value = date.toISOString().split('T')[0];
+                }
+                document.getElementById('gender').value = profile.gender || '';
+                document.getElementById('lookingForGender').value = profile.lookingForGender || '';
+                document.getElementById('city').value = profile.city || '';
+                document.getElementById('country').value = profile.country || '';
+                document.getElementById('bio').value = profile.bio || '';
+                
+            } catch (error) {
+                if (error.message.includes('404') || error.message.includes('Chưa có hồ sơ')) {
+                    // Profile chưa tồn tại, để form trống
+                    console.log('Chưa có hồ sơ, tạo mới');
+                } else {
+                    showAlert('error', 'Không thể tải hồ sơ: ' + error.message);
+                }
+            }
+        }
+        
+        // Load profile on page load
+        loadProfile();
+        
+        // Handle form submit
+        document.getElementById('profileForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const profileData = {
+                knownAs: document.getElementById('knownAs').value,
+                dateOfBirth: document.getElementById('dateOfBirth').value,
+                gender: document.getElementById('gender').value,
+                lookingForGender: document.getElementById('lookingForGender').value,
+                city: document.getElementById('city').value,
+                country: document.getElementById('country').value,
+                bio: document.getElementById('bio').value
+            };
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang lưu...';
+            
+            try {
+                const response = await ApiService.updateProfile(profileData);
+                showAlert('success', response.message || 'Cập nhật hồ sơ thành công!');
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Lưu hồ sơ';
+            }
+        });
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+    </script>
+}
+

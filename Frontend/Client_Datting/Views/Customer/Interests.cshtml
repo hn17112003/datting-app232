@@ -1,0 +1,189 @@
+@{
+    ViewData["Title"] = "Sở thích của tôi";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>🎯 Sở thích của tôi</h2>
+                <a href="/Profile/Index" class="btn btn-outline-secondary">← Quay lại Hồ sơ</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- Interests Selection -->
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Chọn sở thích của bạn</h5>
+                </div>
+                <div class="card-body">
+                    <div id="interestsContainer">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-primary w-100" id="saveInterestsBtn" onclick="saveInterests()" disabled>
+                            Lưu sở thích
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        let allInterests = [];
+        let selectedInterestIds = [];
+        let myUserId = null;
+        let myInterests = [];
+        
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Initialize
+        async function initialize() {
+            try {
+                // Get current user
+                const user = await ApiService.getCurrentUser();
+                myUserId = user.id;
+                
+                // Load all interests and my interests
+                await Promise.all([
+                    loadAllInterests(),
+                    loadMyInterests()
+                ]);
+            } catch (error) {
+                console.error('Error initializing:', error);
+            }
+        }
+        
+        // Load all interests
+        async function loadAllInterests() {
+            try {
+                allInterests = await ApiService.getAllInterests();
+                displayInterests();
+            } catch (error) {
+                document.getElementById('interestsContainer').innerHTML = `
+                    <div class="alert alert-danger">Lỗi: ${error.message}</div>
+                `;
+            }
+        }
+        
+        // Load my interests
+        async function loadMyInterests() {
+            try {
+                myInterests = await ApiService.getUserInterests(myUserId);
+                selectedInterestIds = myInterests.map(i => i.id);
+                displayInterests();
+            } catch (error) {
+                console.error('Error loading my interests:', error);
+            }
+        }
+        
+        // Display interests
+        function displayInterests() {
+            const container = document.getElementById('interestsContainer');
+            
+            if (allInterests.length === 0) {
+                container.innerHTML = '<div class="alert alert-info">Chưa có sở thích nào</div>';
+                return;
+            }
+            
+            container.innerHTML = `
+                <div class="row">
+                    ${allInterests.map(interest => {
+                        const isSelected = selectedInterestIds.includes(interest.id);
+                        return `
+                            <div class="col-md-3 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" 
+                                           id="interest_${interest.id}" 
+                                           value="${interest.id}"
+                                           ${isSelected ? 'checked' : ''}
+                                           onchange="toggleInterest('${interest.id}')">
+                                    <label class="form-check-label" for="interest_${interest.id}">
+                                        ${interest.name}
+                                    </label>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            
+            document.getElementById('saveInterestsBtn').disabled = false;
+        }
+        
+        // Toggle interest
+        function toggleInterest(interestId) {
+            const checkbox = document.getElementById(`interest_${interestId}`);
+            if (checkbox.checked) {
+                if (!selectedInterestIds.includes(interestId)) {
+                    selectedInterestIds.push(interestId);
+                }
+            } else {
+                selectedInterestIds = selectedInterestIds.filter(id => id !== interestId);
+            }
+        }
+        
+        // Save interests
+        async function saveInterests() {
+            const btn = document.getElementById('saveInterestsBtn');
+            btn.disabled = true;
+            btn.textContent = 'Đang lưu...';
+            
+            try {
+                await ApiService.updateMyInterests(selectedInterestIds);
+                showAlert('success', 'Đã cập nhật sở thích thành công!');
+            } catch (error) {
+                showAlert('error', 'Lỗi: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Lưu sở thích';
+            }
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+        
+        // Initialize on page load
+        initialize();
+    </script>
+}
+

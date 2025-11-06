@@ -1,0 +1,260 @@
+@{
+    ViewData["Title"] = "Tin nhắn";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>💬 Tin nhắn</h2>
+                <div>
+                    <a href="/Customer/Discover" class="btn btn-outline-primary me-2">🔍 Khám phá</a>
+                    <a href="/Customer/Matches" class="btn btn-outline-primary">❤️ Matches</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Conversations List -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Cuộc hội thoại</h5>
+                </div>
+                <div class="card-body p-0" style="max-height: 600px; overflow-y: auto;">
+                    <div id="conversationsList">
+                        <div class="text-center p-3">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Messages Area -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" id="conversationHeader">
+                    <h5 class="mb-0">Chọn một cuộc hội thoại</h5>
+                </div>
+                <div class="card-body p-0" style="height: 500px; display: flex; flex-direction: column;">
+                    <div id="messagesContainer" style="flex: 1; overflow-y: auto; padding: 15px;">
+                        <div class="text-center text-muted p-5">
+                            Chọn một cuộc hội thoại để bắt đầu trò chuyện
+                        </div>
+                    </div>
+                    <div id="messageInputContainer" style="display: none; padding: 15px; border-top: 1px solid #dee2e6;">
+                        <form id="messageForm" class="d-flex">
+                            <input type="text" class="form-control me-2" id="messageInput" placeholder="Nhập tin nhắn..." required>
+                            <button type="submit" class="btn btn-primary">Gửi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        let currentConversationId = null;
+        let currentRecipientId = null;
+        let conversations = [];
+        
+        // Check authentication and role
+        if (!ApiService.isAuthenticated()) {
+            window.location.href = '/Auth/Login';
+        }
+        
+        // Check if user is admin - redirect to admin panel
+        (async function() {
+            try {
+                const user = await ApiService.getCurrentUser();
+                const roleName = user.roleName || '';
+                const isAdmin = roleName === 'Admin' || roleName === 'admin';
+                if (isAdmin) {
+                    alert('Admin không thể truy cập tính năng này. Vui lòng sử dụng Admin Panel.');
+                    window.location.href = '/Admin/Index';
+                }
+            } catch (error) {
+                console.error('Error checking role:', error);
+            }
+        })();
+        
+        // Get conversation ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const conversationIdFromUrl = urlParams.get('conversationId');
+        
+        // Load conversations
+        async function loadConversations() {
+            try {
+                conversations = await ApiService.getConversations();
+                displayConversations();
+                
+                // Auto-select conversation from URL
+                if (conversationIdFromUrl) {
+                    selectConversation(conversationIdFromUrl);
+                }
+            } catch (error) {
+                document.getElementById('conversationsList').innerHTML = `
+                    <div class="alert alert-danger m-3">Lỗi: ${error.message}</div>
+                `;
+            }
+        }
+        
+        // Display conversations
+        async function displayConversations() {
+            const container = document.getElementById('conversationsList');
+            
+            if (conversations.length === 0) {
+                container.innerHTML = `
+                    <div class="p-3 text-center text-muted">
+                        Chưa có cuộc hội thoại nào
+                    </div>
+                `;
+                return;
+            }
+            
+            // Load profiles for all conversations
+            const conversationsWithProfiles = await Promise.all(conversations.map(async (conv) => {
+                let profile = null;
+                try {
+                    profile = await ApiService.getProfileByUserId(conv.otherUserId);
+                } catch (error) {
+                    console.error('Error loading profile:', error);
+                }
+                return { ...conv, profile };
+            }));
+            
+            container.innerHTML = conversationsWithProfiles.map(conv => {
+                const displayName = conv.profile?.knownAs || conv.otherUserId.substring(0, 8) + '...';
+                return `
+                    <div class="list-group-item list-group-item-action ${conv.id === currentConversationId ? 'active' : ''}" 
+                         onclick="selectConversation('${conv.id}', '${conv.otherUserId}')" 
+                         style="cursor: pointer;">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">${displayName}</h6>
+                            <small>${formatDate(conv.lastMessageAt || conv.createdAt)}</small>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Select conversation
+        async function selectConversation(conversationId, recipientId = null) {
+            currentConversationId = conversationId;
+            
+            if (!recipientId) {
+                const conv = conversations.find(c => c.id === conversationId);
+                if (conv) recipientId = conv.otherUserId;
+            }
+            
+            currentRecipientId = recipientId;
+            
+            // Update UI
+            document.querySelectorAll('.list-group-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event?.currentTarget?.classList.add('active');
+            
+            // Load profile for header
+            let profile = null;
+            try {
+                profile = await ApiService.getProfileByUserId(recipientId);
+            } catch (error) {
+                console.error('Error loading profile:', error);
+            }
+            
+            const displayName = profile?.knownAs || recipientId.substring(0, 8) + '...';
+            
+            // Load messages
+            await loadMessages(conversationId);
+            
+            // Show input
+            document.getElementById('messageInputContainer').style.display = 'block';
+            document.getElementById('conversationHeader').innerHTML = `
+                <h5 class="mb-0">Cuộc hội thoại với ${displayName}</h5>
+            `;
+        }
+        
+        // Load messages
+        async function loadMessages(conversationId) {
+            const container = document.getElementById('messagesContainer');
+            container.innerHTML = '<div class="text-center"><div class="spinner-border"></div></div>';
+            
+            try {
+                const messages = await ApiService.getMessages(conversationId, 0, 100);
+                
+                // Get current user
+                const currentUser = await ApiService.getCurrentUser();
+                
+                if (messages.length === 0) {
+                    container.innerHTML = '<div class="text-center text-muted p-3">Chưa có tin nhắn nào</div>';
+                    return;
+                }
+                
+                container.innerHTML = messages.map(msg => {
+                    const isMe = msg.senderId === currentUser.id;
+                    return `
+                        <div class="d-flex ${isMe ? 'justify-content-end' : 'justify-content-start'} mb-2">
+                            <div class="card ${isMe ? 'bg-primary text-white' : 'bg-light'}" style="max-width: 70%;">
+                                <div class="card-body p-2">
+                                    <p class="card-text mb-0">${msg.content}</p>
+                                    <small class="${isMe ? 'text-white-50' : 'text-muted'}">${formatDate(msg.sentAt)}</small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                // Scroll to bottom
+                container.scrollTop = container.scrollHeight;
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
+            }
+        }
+        
+        // Send message
+        document.getElementById('messageForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const content = document.getElementById('messageInput').value.trim();
+            if (!content || !currentConversationId || !currentRecipientId) return;
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang gửi...';
+            
+            try {
+                await ApiService.sendMessage(currentConversationId, currentRecipientId, content);
+                document.getElementById('messageInput').value = '';
+                
+                // Reload messages
+                await loadMessages(currentConversationId);
+                
+                // Reload conversations to update last message time
+                await loadConversations();
+            } catch (error) {
+                alert('Lỗi gửi tin nhắn: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Gửi';
+            }
+        });
+        
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toLocaleString('vi-VN');
+        }
+        
+        // Load on page load
+        loadConversations();
+    </script>
+}
+

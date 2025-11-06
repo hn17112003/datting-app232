@@ -1,0 +1,84 @@
+@{
+    ViewData["Title"] = "Xác thực Email";
+    var email = Context.Request.Query["email"].ToString();
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4">Xác thực Email</h2>
+                    
+                    <div id="alertContainer"></div>
+                    
+                    <form id="verifyForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="@email" required readonly>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="code" class="form-label">Mã xác thực</label>
+                            <input type="text" class="form-control" id="code" name="code" required maxlength="6" placeholder="Nhập 6 số">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 mb-3">Xác thực</button>
+                        
+                        <div class="text-center">
+                            <a href="/Auth/Login" class="text-decoration-none">Quay lại đăng nhập</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script>
+        document.getElementById('verifyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const code = document.getElementById('code').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const alertContainer = document.getElementById('alertContainer');
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang xác thực...';
+            alertContainer.innerHTML = '';
+            
+            try {
+                const response = await ApiService.verifyEmail(email, code);
+                
+                // Show success message
+                alertContainer.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        ${response.message || 'Xác thực thành công!'}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                // Redirect to login
+                setTimeout(() => {
+                    window.location.href = '/Auth/Login';
+                }, 2000);
+                
+            } catch (error) {
+                alertContainer.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        ${error.message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Xác thực';
+            }
+        });
+    </script>
+}
+

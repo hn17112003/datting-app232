@@ -1,0 +1,187 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">📊 Bảng điều khiển Admin</h2>
+        </div>
+    </div>
+    
+    <div id="alertContainer"></div>
+    
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng số người dùng</h5>
+                    <h2 class="mb-0" id="totalUsers">-</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng số Match</h5>
+                    <h2 class="mb-0" id="totalMatches">-</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Tổng số tin nhắn</h5>
+                    <h2 class="mb-0" id="totalMessages">-</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Match Rate -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">📈 Tỷ lệ Match</h5>
+                </div>
+                <div class="card-body">
+                    <div id="matchRateContainer">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Đang tải...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">⚡ Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <a href="/Admin/Users" class="btn btn-primary w-100 mb-2">Quản lý Users</a>
+                    <a href="/Admin/Interests" class="btn btn-success w-100 mb-2">Quản lý Sở thích</a>
+                    <a href="/Admin/Analytics" class="btn btn-info w-100">Phân tích chi tiết</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Active Users -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">👥 Người dùng hoạt động gần đây (7 ngày)</h5>
+                    <button class="btn btn-sm btn-outline-primary" onclick="loadActiveUsers()">Làm mới</button>
+                </div>
+                <div class="card-body">
+                    <div id="activeUsersContainer">
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Đang tải...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/apiService.js"></script>
+    <script src="~/js/adminHelper.js"></script>
+    <script>
+        // Check admin access
+        document.addEventListener('DOMContentLoaded', async function() {
+            const hasAccess = await AdminHelper.checkAdminAccess();
+            if (!hasAccess) return;
+            
+            loadStatistics();
+            loadMatchRate();
+            loadActiveUsers();
+        });
+        
+        // Load statistics
+        async function loadStatistics() {
+            try {
+                const stats = await ApiService.getStatistics();
+                document.getElementById('totalUsers').textContent = stats.totalUsers || 0;
+                document.getElementById('totalMatches').textContent = stats.totalMatches || 0;
+                document.getElementById('totalMessages').textContent = stats.totalMessages || 0;
+            } catch (error) {
+                showAlert('error', 'Không thể tải thống kê: ' + error.message);
+            }
+        }
+        
+        // Load match rate
+        async function loadMatchRate() {
+            try {
+                const data = await ApiService.getMatchRate();
+                const rate = (data.matchRate * 100).toFixed(2);
+                document.getElementById('matchRateContainer').innerHTML = `
+                    <h3>${rate}%</h3>
+                    <p class="text-muted mb-0">
+                        <strong>${data.totalMatches}</strong> matches từ <strong>${data.totalLikes}</strong> likes
+                    </p>
+                `;
+            } catch (error) {
+                document.getElementById('matchRateContainer').innerHTML = `
+                    <div class="alert alert-warning">Không thể tải dữ liệu</div>
+                `;
+            }
+        }
+        
+        // Load active users
+        async function loadActiveUsers() {
+            const container = document.getElementById('activeUsersContainer');
+            container.innerHTML = '<div class="text-center"><div class="spinner-border"></div></div>';
+            
+            try {
+                const users = await ApiService.getActiveUsers(7, 10);
+                if (users.length === 0) {
+                    container.innerHTML = '<p class="text-muted text-center">Chưa có người dùng hoạt động</p>';
+                    return;
+                }
+                
+                container.innerHTML = `
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Hoạt động lần cuối</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${users.map(user => `
+                                    <tr>
+                                        <td>${user.email}</td>
+                                        <td>${AdminHelper.formatDate(user.lastActive)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } catch (error) {
+                container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
+            }
+        }
+        
+        function showAlert(type, message) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            alertContainer.innerHTML = `
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+    </script>
+}
+

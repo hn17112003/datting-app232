@@ -1,53 +1,105 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\",
+  "WorkspaceRootPath": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\wwwroot\\js\\adminhelper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\wwwroot\\js\\adminhelper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:wwwroot\\js\\adminhelper.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\views\\admin\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\wwwroot\\js\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\wwwroot\\js\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:wwwroot\\js\\auth.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\wwwroot\\js\\apiservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\wwwroot\\js\\apiservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:wwwroot\\js\\apiservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\views\\admin\\interests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\customer\\photos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\customer\\photos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\customer\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\customer\\messages.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\customer\\matches.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\customer\\matches.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\customer\\interests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\customer\\interests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\customer\\discover.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\customer\\discover.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\customer\\blockedusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\customer\\blockedusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\home\\suggestions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\home\\suggestions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\auth\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\auth\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\auth\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\auth\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\auth\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\auth\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\admin\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\admin\\interests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\interests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\views\\admin\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:views\\admin\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|c:\\project\\prn232\\frontend\\client_datting\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\frontend\\client_datting\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E21425F7-1C01-47A8-BCED-F61EFC90F935}|Client_Datting.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -58,36 +110,229 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 10,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:8:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Messages.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Messages.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\Messages.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Messages.cshtml",
+              "RelativeToolTip": "Views\\Customer\\Messages.cshtml",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAiwAIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-06T19:15:56.913Z",
+              "WhenOpened": "2025-11-07T10:36:06.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "Matches.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Matches.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\Matches.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Matches.cshtml",
+              "RelativeToolTip": "Views\\Customer\\Matches.cshtml",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAcwLcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T10:35:36.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Interests.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Interests.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\Interests.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Interests.cshtml",
+              "RelativeToolTip": "Views\\Customer\\Interests.cshtml",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAcwLoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T10:35:11.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Suggestions.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Home\\Suggestions.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Suggestions.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Home\\Suggestions.cshtml",
+              "RelativeToolTip": "Views\\Home\\Suggestions.cshtml",
+              "ViewState": "AgIAALUAAAAAAAAAAAAcwM0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T10:03:01.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Discover.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Discover.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\Discover.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Discover.cshtml",
+              "RelativeToolTip": "Views\\Customer\\Discover.cshtml",
+              "ViewState": "AgIAANUBAAAAAAAAAAAiwO0BAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T09:40:58.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BlockedUsers.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\BlockedUsers.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\BlockedUsers.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\BlockedUsers.cshtml",
+              "RelativeToolTip": "Views\\Customer\\BlockedUsers.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8BAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T09:39:07.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Register.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAIsBAAAAAAAAAAAmwKMBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T09:22:18.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAACgBAAAAAAAAAAAmwEABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T09:20:24.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\ForgotPassword.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\ForgotPassword.cshtml",
+              "RelativeToolTip": "Views\\Auth\\ForgotPassword.cshtml",
+              "ViewState": "AgIAALIAAAAAAAAAAAAiwO4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T09:08:31.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Login.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Login.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Login.cshtml",
+              "ViewState": "AgIAABMBAAAAAAAAAAAiwCsBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T08:55:40.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "adminHelper.js",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\adminHelper.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\adminHelper.js",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\adminHelper.js",
+              "RelativeToolTip": "wwwroot\\js\\adminHelper.js",
+              "ViewState": "AgIAABsAAAAAAAAAAAAcwDMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-06T17:50:45.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Photos.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Photos.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\Photos.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Customer\\Photos.cshtml",
+              "RelativeToolTip": "Views\\Customer\\Photos.cshtml",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAiwOYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T10:36:48.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "apiService.js",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\apiService.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\apiService.js",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\apiService.js",
+              "RelativeToolTip": "wwwroot\\js\\apiService.js",
+              "ViewState": "AgIAAKABAAAAAAAAAAAcwHUCAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-06T17:50:52.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "auth.js",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\auth.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\auth.js",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\auth.js",
+              "RelativeToolTip": "wwwroot\\js\\auth.js",
+              "ViewState": "AgIAADEAAAAAAAAAAAAcwEkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-06T17:51:17.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\ResetPassword.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\ResetPassword.cshtml",
+              "RelativeToolTip": "Views\\Auth\\ResetPassword.cshtml",
+              "ViewState": "AgIAANgBAAAAAAAAAAAmwPABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T09:27:27.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "VerifyEmail.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\VerifyEmail.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\VerifyEmail.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Auth\\VerifyEmail.cshtml",
+              "RelativeToolTip": "Views\\Auth\\VerifyEmail.cshtml",
+              "ViewState": "AgIAAM4BAAAAAAAAAAAmwOYBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-07T09:36:33.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABsBAAAAAAAAAAAmwDkBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-06T19:15:56.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "site.js",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\site.js",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\site.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\site.js",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\wwwroot\\js\\site.js",
               "RelativeToolTip": "wwwroot\\js\\site.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
@@ -95,60 +340,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "auth.js",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\auth.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\auth.js",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\auth.js",
-              "RelativeToolTip": "wwwroot\\js\\auth.js",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-06T17:51:17.089Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "apiService.js",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\apiService.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\apiService.js",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\apiService.js",
-              "RelativeToolTip": "wwwroot\\js\\apiService.js",
-              "ViewState": "AgIAAC0BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-06T17:50:52.352Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "adminHelper.js",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\adminHelper.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\adminHelper.js",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\wwwroot\\js\\adminHelper.js",
-              "RelativeToolTip": "wwwroot\\js\\adminHelper.js",
-              "ViewState": "AgIAABwAAAAAAAAAAAAwwCMAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-06T17:50:45.018Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 17,
               "Title": "Interests.cshtml",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Interests.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Interests.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\Interests.cshtml",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Interests.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Interests.cshtml",
               "RelativeToolTip": "Views\\Admin\\Interests.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAADsAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAACIBAAAAAAAAAAAAADoBAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-06T17:50:23Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 20,
               "Title": "Analytics.cshtml",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Analytics.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Analytics.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\Analytics.cshtml",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Analytics.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Analytics.cshtml",
               "RelativeToolTip": "Views\\Admin\\Analytics.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAALUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -156,35 +364,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 18,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Index.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\Index.cshtml",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Index.cshtml",
               "RelativeToolTip": "Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAuwK0AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAALcAAAAAAAAAAAAiwGsBAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-06T17:48:08.428Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 15,
               "Title": "Users.cshtml",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Users.cshtml",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Users.cshtml",
               "RelativeDocumentMoniker": "Views\\Admin\\Users.cshtml",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Views\\Admin\\Users.cshtml",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Views\\Admin\\Users.cshtml",
               "RelativeToolTip": "Views\\Admin\\Users.cshtml",
-              "ViewState": "AgIAAMMAAAAAAAAAAAAuwNEAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAiwCsCAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-11-06T17:49:05.941Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 23,
               "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Models\\ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Models\\ErrorViewModel.cs",
               "RelativeToolTip": "Models\\ErrorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -192,11 +400,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 24,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\appsettings.json",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\appsettings.json",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -204,11 +412,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 22,
               "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Controllers\\AdminController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Frontend\\Client_Datting\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Frontend\\Client_Datting\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Controllers\\AdminController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

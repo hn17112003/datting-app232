@@ -6,7 +6,7 @@ const AdminHelper = {
             window.location.href = '/Auth/Login';
             return false;
         }
-        
+
         try {
             const isAdmin = await ApiService.checkAdminRole();
             if (!isAdmin) {
@@ -21,14 +21,14 @@ const AdminHelper = {
             return false;
         }
     },
-    
+
     // Format date
     formatDate(dateString) {
         if (!dateString) return 'N/A';
         const date = new Date(dateString);
         return date.toLocaleString('vi-VN');
     },
-    
+
     // Format status badge
     getStatusBadge(status) {
         const statusMap = {
@@ -38,7 +38,7 @@ const AdminHelper = {
         const color = statusMap[status] || 'secondary';
         return `<span class="badge bg-${color}">${status || 'N/A'}</span>`;
     },
-    
+
     // Format verified badge
     getVerifiedBadge(isVerified) {
         if (isVerified) {
@@ -50,4 +50,3 @@ const AdminHelper = {
 
 // Export
 window.AdminHelper = AdminHelper;
-

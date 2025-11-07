@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Dating_Manager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+862aa49d38786f1cbc42983459370bd3a070c1f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Dating_Manager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Dating_Manager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

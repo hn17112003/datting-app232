@@ -1,143 +1,300 @@
-@{
-    ViewData["Title"] = "Đăng nhập Admin";
-}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập Admin - LoveConnect</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #ff4b91;
+            --secondary-pink: #ff8fab;
+            --light-pink: #fff5f7;
+            --dark-pink: #e83e8c;
+            --gradient: linear-gradient(135deg, #ff4b91 0%, #ff8fab 100%);
+        }
 
-<style>
-    .admin-login-container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    
-    .admin-login-card {
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        padding: 40px;
-        max-width: 400px;
-        width: 100%;
-    }
-    
-    .admin-login-header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    
-    .admin-login-header h1 {
-        color: #667eea;
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-    
-    .admin-login-header p {
-        color: #666;
-        font-size: 0.9rem;
-    }
-    
-    .admin-login-icon {
-        font-size: 3rem;
-        margin-bottom: 15px;
-    }
-</style>
+        .admin-login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            padding: 20px;
+        }
 
-<div class="admin-login-container">
-    <div class="admin-login-card">
-        <div class="admin-login-header">
-            <div class="admin-login-icon">⚙️</div>
-            <h1>Admin Login</h1>
-            <p>Đăng nhập vào hệ thống quản trị</p>
+        .admin-login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            padding: 40px;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .admin-login-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--gradient);
+            }
+
+        .admin-login-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .admin-login-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary-pink);
+        }
+
+        .admin-login-header h1 {
+            color: var(--primary-pink);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .admin-login-header p {
+            color: #666;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .form-control {
+            border-radius: 12px;
+            border: 2px solid #f0f0f0;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: var(--primary-pink);
+                box-shadow: 0 0 0 0.2rem rgba(255, 75, 145, 0.15);
+            }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-login {
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+            .btn-login:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(255, 75, 145, 0.4);
+            }
+
+            .btn-login:disabled {
+                opacity: 0.7;
+                transform: none;
+            }
+
+        .back-link {
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+            .back-link:hover {
+                color: var(--dark-pink);
+                transform: translateX(-3px);
+            }
+
+        .alert-custom {
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 12px 16px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .password-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-login-card">
+            <div class="admin-login-header">
+                <div class="admin-login-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h1>Đăng nhập Admin</h1>
+                <p>Quản lý hệ thống LoveConnect</p>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <form id="adminLoginForm">
+                <div class="mb-4">
+                    <label for="email" class="form-label">
+                        <i class="fas fa-envelope me-1"></i>Email
+                    </label>
+                    <input type="email" class="form-control" id="email" name="email" required autofocus
+                           placeholder="admin@loveconnect.com">
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label">
+                        <i class="fas fa-lock me-1"></i>Mật khẩu
+                    </label>
+                    <div class="password-container">
+                        <input type="password" class="form-control" id="password" name="password" required
+                               placeholder="Nhập mật khẩu">
+                        <button type="button" class="password-toggle" onclick="togglePassword()">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+                </button>
+
+                <div class="text-center mt-4">
+                    <a href="/Auth/Login" class="back-link">
+                        <i class="fas fa-arrow-left me-1"></i>Quay lại đăng nhập thường
+                    </a>
+                </div>
+            </form>
         </div>
-        
-        <div id="alertContainer"></div>
-        
-        <form id="adminLoginForm">
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required autofocus>
-            </div>
-            
-            <div class="mb-3">
-                <label for="password" class="form-label">Mật khẩu</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            
-            <button type="submit" class="btn btn-primary w-100 mb-3" style="background: #667eea; border: none; padding: 12px;">
-                Đăng nhập
-            </button>
-            
-            <div class="text-center">
-                <a href="/Auth/Login" class="text-decoration-none" style="color: #667eea;">← Quay lại đăng nhập thường</a>
-            </div>
-        </form>
     </div>
-</div>
 
-@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/apiService.js"></script>
     <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.password-toggle i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+            }
+        }
+
+        // Login form handler
         document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const submitBtn = this.querySelector('button[type="submit"]');
+            const submitBtn = document.getElementById('loginBtn');
             const alertContainer = document.getElementById('alertContainer');
-            
-            // Disable button
+
+            // Disable button and show loading
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Đang đăng nhập...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Đang đăng nhập...';
             alertContainer.innerHTML = '';
-            
+
             try {
                 const response = await ApiService.login(email, password);
-                
+
                 // Kiểm tra role sau khi login
                 const user = await ApiService.getCurrentUser();
                 const roleName = user.roleName || '';
                 const isAdmin = roleName === 'Admin' || roleName === 'admin';
-                
+
                 if (!isAdmin) {
                     // Nếu không phải admin, đăng xuất và báo lỗi
                     ApiService.logout();
                     alertContainer.innerHTML = `
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-danger alert-custom alert-dismissible fade show" role="alert">
+                            <i class="fas fa-shield-alt me-2"></i>
                             Tài khoản này không có quyền truy cập Admin Panel. Vui lòng đăng nhập bằng tài khoản Admin.
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     `;
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Đăng nhập';
+                    submitBtn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Đăng nhập';
                     return;
                 }
-                
+
                 // Show success message
                 alertContainer.innerHTML = `
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <div class="alert alert-success alert-custom alert-dismissible fade show" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>
                         Đăng nhập thành công! Đang chuyển hướng...
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                
+
                 // Redirect to admin panel
                 setTimeout(() => {
                     window.location.href = '/Admin/Index';
-                }, 1000);
-                
+                }, 1500);
+
             } catch (error) {
                 alertContainer.innerHTML = `
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        ${error.message}
+                    <div class="alert alert-danger alert-custom alert-dismissible fade show" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        ${error.message || 'Đăng nhập thất bại. Vui lòng thử lại.'}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                
+
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Đăng nhập';
+                submitBtn.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Đăng nhập';
+            }
+        });
+
+        // Enter key support
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const form = document.getElementById('adminLoginForm');
+                if (form.checkValidity()) {
+                    form.dispatchEvent(new Event('submit'));
+                }
             }
         });
     </script>
-}
-
+</body>
+</html>

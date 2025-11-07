@@ -47,12 +47,12 @@
         let selectedInterestIds = [];
         let myUserId = null;
         let myInterests = [];
-        
+
         // Check authentication and role
         if (!ApiService.isAuthenticated()) {
             window.location.href = '/Auth/Login';
         }
-        
+
         // Check if user is admin - redirect to admin panel
         (async function() {
             try {
@@ -67,14 +67,14 @@
                 console.error('Error checking role:', error);
             }
         })();
-        
+
         // Initialize
         async function initialize() {
             try {
                 // Get current user
                 const user = await ApiService.getCurrentUser();
                 myUserId = user.id;
-                
+
                 // Load all interests and my interests
                 await Promise.all([
                     loadAllInterests(),
@@ -84,7 +84,7 @@
                 console.error('Error initializing:', error);
             }
         }
-        
+
         // Load all interests
         async function loadAllInterests() {
             try {
@@ -96,7 +96,7 @@
                 `;
             }
         }
-        
+
         // Load my interests
         async function loadMyInterests() {
             try {
@@ -107,16 +107,16 @@
                 console.error('Error loading my interests:', error);
             }
         }
-        
+
         // Display interests
         function displayInterests() {
             const container = document.getElementById('interestsContainer');
-            
+
             if (allInterests.length === 0) {
                 container.innerHTML = '<div class="alert alert-info">Chưa có sở thích nào</div>';
                 return;
             }
-            
+
             container.innerHTML = `
                 <div class="row">
                     ${allInterests.map(interest => {
@@ -124,8 +124,8 @@
                         return `
                             <div class="col-md-3 mb-2">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" 
-                                           id="interest_${interest.id}" 
+                                    <input class="form-check-input" type="checkbox"
+                                           id="interest_${interest.id}"
                                            value="${interest.id}"
                                            ${isSelected ? 'checked' : ''}
                                            onchange="toggleInterest('${interest.id}')">
@@ -138,10 +138,10 @@
                     }).join('')}
                 </div>
             `;
-            
+
             document.getElementById('saveInterestsBtn').disabled = false;
         }
-        
+
         // Toggle interest
         function toggleInterest(interestId) {
             const checkbox = document.getElementById(`interest_${interestId}`);
@@ -153,13 +153,13 @@
                 selectedInterestIds = selectedInterestIds.filter(id => id !== interestId);
             }
         }
-        
+
         // Save interests
         async function saveInterests() {
             const btn = document.getElementById('saveInterestsBtn');
             btn.disabled = true;
             btn.textContent = 'Đang lưu...';
-            
+
             try {
                 await ApiService.updateMyInterests(selectedInterestIds);
                 showAlert('success', 'Đã cập nhật sở thích thành công!');
@@ -170,7 +170,7 @@
                 btn.textContent = 'Lưu sở thích';
             }
         }
-        
+
         function showAlert(type, message) {
             const alertContainer = document.getElementById('alertContainer');
             const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
@@ -181,7 +181,7 @@
                 </div>
             `;
         }
-        
+
         // Initialize on page load
         initialize();
     </script>

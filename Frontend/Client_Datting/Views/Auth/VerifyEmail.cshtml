@@ -6,27 +6,35 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
-            <div class="card shadow">
+            <div class="card shadow pink-card">
                 <div class="card-body p-4">
-                    <h2 class="card-title text-center mb-4">Xác thực Email</h2>
-                    
+                    <h2 class="card-title text-center mb-4 pink-title">Xác thực Email</h2>
+
                     <div id="alertContainer"></div>
-                    
+
                     <form id="verifyForm">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="@email" required readonly>
+                            <label for="email" class="form-label pink-label">Email</label>
+                            <input type="email" class="form-control pink-input" id="email" name="email" value="@email" required readonly>
+                            <div class="form-text pink-text">Mã xác thực đã được gửi đến email này</div>
                         </div>
-                        
+
                         <div class="mb-3">
-                            <label for="code" class="form-label">Mã xác thực</label>
-                            <input type="text" class="form-control" id="code" name="code" required maxlength="6" placeholder="Nhập 6 số">
+                            <label for="code" class="form-label pink-label">Mã xác thực</label>
+                            <input type="text" class="form-control pink-input verification-code" id="code" name="code" required maxlength="6" placeholder="Nhập 6 số" inputmode="numeric" pattern="[0-9]*">
+                            <div class="form-text pink-text">Vui lòng nhập 6 chữ số bạn nhận được trong email</div>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary w-100 mb-3">Xác thực</button>
-                        
+
+                        <button type="submit" class="btn pink-btn w-100 mb-3">
+                            <span class="btn-text">Xác thực</span>
+                            <span class="btn-loading d-none">
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                Đang xác thực...
+                            </span>
+                        </button>
+
                         <div class="text-center">
-                            <a href="/Auth/Login" class="text-decoration-none">Quay lại đăng nhập</a>
+                            <a href="/Auth/Login" class="pink-link">Quay lại đăng nhập</a>
                         </div>
                     </form>
                 </div>
@@ -35,50 +43,445 @@
     </div>
 </div>
 
+<style>
+    .pink-card {
+        border: none;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #fff5f7 0%, #fce4ec 100%);
+        box-shadow: 0 8px 32px rgba(236, 64, 122, 0.15);
+        border: 1px solid rgba(236, 64, 122, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .pink-title {
+        color: #ec407a;
+        font-weight: 600;
+        font-size: 1.8rem;
+        text-shadow: 0 2px 4px rgba(236, 64, 122, 0.1);
+    }
+
+    .pink-btn {
+        background: linear-gradient(45deg, #ec407a, #ad1457);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 24px;
+        font-weight: 600;
+        color: white;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .pink-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 64, 122, 0.4);
+            color: white;
+        }
+
+        .pink-btn:active {
+            transform: translateY(0);
+        }
+
+        .pink-btn:disabled {
+            background: linear-gradient(45deg, #f8bbd9, #f48fb1);
+            transform: none;
+            box-shadow: none;
+        }
+
+    .pink-input {
+        border: 2px solid #f8bbd9;
+        border-radius: 12px;
+        padding: 12px 16px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+        .pink-input:focus {
+            border-color: #ec407a;
+            box-shadow: 0 0 0 0.2rem rgba(236, 64, 122, 0.25);
+            background: white;
+            transform: scale(1.02);
+        }
+
+        .pink-input:read-only {
+            background: rgba(248, 187, 217, 0.2);
+            border-color: #f8bbd9;
+            cursor: not-allowed;
+        }
+
+    .pink-label {
+        color: #ad1457;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .pink-text {
+        color: #ec407a;
+        font-size: 0.875rem;
+    }
+
+    .pink-link {
+        color: #ec407a;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+        .pink-link:hover {
+            color: #ad1457;
+        }
+
+        .pink-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(45deg, #ec407a, #ad1457);
+            transition: width 0.3s ease;
+        }
+
+        .pink-link:hover::after {
+            width: 100%;
+        }
+
+    body {
+        background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        border: none;
+        color: #2e7d32;
+        border-radius: 12px;
+        border-left: 4px solid #4caf50;
+    }
+
+    .alert-danger {
+        background: linear-gradient(135deg, #ffebee, #ffcdd2);
+        border: none;
+        color: #c62828;
+        border-radius: 12px;
+        border-left: 4px solid #f44336;
+    }
+
+    .btn-loading .spinner-border {
+        color: #fff;
+    }
+
+    /* Animation for card entrance */
+    .card {
+        animation: slideUp 0.5s ease-out;
+    }
+
+    @@keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Floating animation */
+    @@keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+    }
+
+    .pink-card {
+        animation: float 7s ease-in-out infinite;
+    }
+
+    /* Verification code input styling */
+    .verification-code {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 8px;
+        color: #ad1457;
+    }
+
+        .verification-code::placeholder {
+            letter-spacing: normal;
+            font-size: 0.9rem;
+            color: #f8bbd9;
+        }
+
+        .verification-code:focus {
+            letter-spacing: 8px;
+        }
+
+    /* Email icon decoration */
+    .pink-card::before {
+        content: '✉️';
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        background: linear-gradient(45deg, #ec407a, #ad1457);
+        color: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(236, 64, 122, 0.3);
+        z-index: 1;
+    }
+
+    /* Success animation */
+    .success-check {
+        color: #4caf50;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: bounce 0.6s ease-in-out;
+    }
+
+    @@keyframes bounce {
+        0%, 20%, 60%, 100% {
+            transform: translateY(0);
+        }
+
+        40% {
+            transform: translateY(-10px);
+        }
+
+        80% {
+            transform: translateY(-5px);
+        }
+    }
+
+    /* Code input animation */
+    .verification-code {
+        transition: all 0.3s ease;
+    }
+
+        .verification-code:valid {
+            border-color: #4caf50;
+            background: rgba(232, 245, 233, 0.5);
+        }
+
+    /* Resend code link */
+    .resend-link {
+        color: #ec407a;
+        cursor: pointer;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+        .resend-link:hover {
+            color: #ad1457;
+            text-decoration: underline;
+        }
+
+        .resend-link.disabled {
+            color: #f8bbd9;
+            cursor: not-allowed;
+        }
+
+    /* Countdown timer */
+    .countdown {
+        color: #ec407a;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+</style>
+
 @section Scripts {
     <script src="~/js/apiService.js"></script>
     <script>
         document.getElementById('verifyForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const email = document.getElementById('email').value;
             const code = document.getElementById('code').value;
             const submitBtn = this.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
             const alertContainer = document.getElementById('alertContainer');
-            
-            // Disable button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Đang xác thực...';
-            alertContainer.innerHTML = '';
-            
-            try {
-                const response = await ApiService.verifyEmail(email, code);
-                
-                // Show success message
+
+            // Validate code length
+            if (code.length !== 6) {
                 alertContainer.innerHTML = `
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        ${response.message || 'Xác thực thành công!'}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Lỗi!</strong> Vui lòng nhập đủ 6 chữ số mã xác thực.
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                
+                return;
+            }
+
+            // Show loading state
+            btnText.classList.add('d-none');
+            btnLoading.classList.remove('d-none');
+            submitBtn.disabled = true;
+            alertContainer.innerHTML = '';
+
+            try {
+                const response = await ApiService.verifyEmail(email, code);
+
+                // Show success message with animation
+                alertContainer.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <div class="text-center">
+                            <div class="success-check">✓</div>
+                            <strong>Thành công!</strong> ${response.message || 'Xác thực thành công!'}
+                            <div class="mt-2">Đang chuyển hướng...</div>
+                        </div>
+                    </div>
+                `;
+
                 // Redirect to login
                 setTimeout(() => {
                     window.location.href = '/Auth/Login';
                 }, 2000);
-                
+
             } catch (error) {
                 alertContainer.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        ${error.message}
+                        <strong>Lỗi!</strong> ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                
+
+                // Add shake animation on error
+                const card = document.querySelector('.pink-card');
+                card.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    card.style.animation = 'float 7s ease-in-out infinite';
+                }, 500);
+
+            } finally {
+                // Reset button state
+                btnText.classList.remove('d-none');
+                btnLoading.classList.add('d-none');
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Xác thực';
             }
         });
+
+        // Auto-format verification code
+        document.getElementById('code').addEventListener('input', function(e) {
+            // Only allow numbers
+            this.value = this.value.replace(/[^0-9]/g, '');
+
+            // Limit to 6 characters
+            if (this.value.length > 6) {
+                this.value = this.value.slice(0, 6);
+            }
+
+            // Auto-submit when 6 digits are entered
+            if (this.value.length === 6) {
+                // Small delay to let user see the complete code
+                setTimeout(() => {
+                    document.getElementById('verifyForm').dispatchEvent(new Event('submit'));
+                }, 300);
+            }
+        });
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @@keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Focus on code input when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeInput = document.getElementById('code');
+            if (codeInput) {
+                setTimeout(() => {
+                    codeInput.focus();
+                }, 500);
+            }
+
+            // Add interactive effects to inputs
+            const inputs = document.querySelectorAll('.pink-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+            });
+        });
+
+        // Add resend code functionality (optional enhancement)
+        function addResendCodeFeature() {
+            const formText = document.querySelector('.pink-text');
+            const resendHtml = `
+                <div class="mt-2 text-center">
+                    <span class="pink-text">Không nhận được mã? </span>
+                    <span class="resend-link" id="resendLink">Gửi lại mã</span>
+                    <span class="countdown d-none" id="countdown"></span>
+                </div>
+            `;
+            formText.insertAdjacentHTML('afterend', resendHtml);
+
+            let countdown = 60;
+            const resendLink = document.getElementById('resendLink');
+            const countdownEl = document.getElementById('countdown');
+
+            resendLink.addEventListener('click', async function() {
+                if (this.classList.contains('disabled')) return;
+
+                try {
+                    await ApiService.resendVerificationCode(email);
+                    alertContainer.innerHTML = `
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Thành công!</strong> Mã xác thực mới đã được gửi đến email của bạn.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    `;
+
+                    // Start countdown
+                    this.classList.add('disabled');
+                    countdownEl.classList.remove('d-none');
+
+                    const timer = setInterval(() => {
+                        countdown--;
+                        countdownEl.textContent = ` (${countdown}s)`;
+
+                        if (countdown <= 0) {
+                            clearInterval(timer);
+                            this.classList.remove('disabled');
+                            countdownEl.classList.add('d-none');
+                            countdown = 60;
+                        }
+                    }, 1000);
+
+                } catch (error) {
+                    alertContainer.innerHTML = `
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Lỗi!</strong> ${error.message}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // Uncomment the line below to enable resend code feature
+        // addResendCodeFeature();
     </script>
 }
-

@@ -42,24 +42,24 @@ public partial class DatingManagerContext : DbContext
     {
         modelBuilder.Entity<Block>(entity =>
         {
-            entity.HasKey(e => new { e.BlockerId, e.BlockedId }).HasName("PK__Blocks__416BCA36F1BBBDBF");
+            entity.HasKey(e => new { e.BlockerId, e.BlockedId }).HasName("PK__Blocks__416BCA36E0317919");
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
 
             entity.HasOne(d => d.Blocked).WithMany(p => p.BlockBlockeds)
                 .HasForeignKey(d => d.BlockedId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Blocks__BlockedI__03F0984C");
+                .HasConstraintName("FK__Blocks__BlockedI__66603565");
 
             entity.HasOne(d => d.Blocker).WithMany(p => p.BlockBlockers)
                 .HasForeignKey(d => d.BlockerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Blocks__BlockerI__02FC7413");
+                .HasConstraintName("FK__Blocks__BlockerI__6754599E");
         });
 
         modelBuilder.Entity<Conversation>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Conversa__3214EC07B6335E42");
+            entity.HasKey(e => e.Id).HasName("PK__Conversa__3214EC077BFC24E9");
 
             entity.HasIndex(e => new { e.User1Id, e.User2Id }, "UQ_Conversations_Pair").IsUnique();
 
@@ -79,16 +79,16 @@ public partial class DatingManagerContext : DbContext
 
         modelBuilder.Entity<Interest>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Interest__3214EC07F7E40CA8");
+            entity.HasKey(e => e.Id).HasName("PK__Interest__3214EC073C3CFF27");
 
-            entity.HasIndex(e => e.Name, "UQ__Interest__737584F68612B18E").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Interest__737584F6796B1B0F").IsUnique();
 
             entity.Property(e => e.Name).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Like>(entity =>
         {
-            entity.HasKey(e => new { e.SourceUserId, e.TargetUserId }).HasName("PK__Likes__D67C9E2EAB52F7CF");
+            entity.HasKey(e => new { e.SourceUserId, e.TargetUserId }).HasName("PK__Likes__D67C9E2E5DD0C34A");
 
             entity.HasIndex(e => e.SourceUserId, "IX_Likes_SourceUserId");
 
@@ -109,7 +109,7 @@ public partial class DatingManagerContext : DbContext
 
         modelBuilder.Entity<Match>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Matches__3214EC07755B85E0");
+            entity.HasKey(e => e.Id).HasName("PK__Matches__3214EC07433FB94C");
 
             entity.HasIndex(e => e.User1Id, "IX_Matches_User1Id");
 
@@ -136,7 +136,7 @@ public partial class DatingManagerContext : DbContext
 
         modelBuilder.Entity<Message>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Messages__3214EC079E6FBA43");
+            entity.HasKey(e => e.Id).HasName("PK__Messages__3214EC07C8D361BD");
 
             entity.HasIndex(e => new { e.ConversationId, e.SentAt }, "IX_Messages_ConversationId_SentAt");
 
@@ -164,7 +164,7 @@ public partial class DatingManagerContext : DbContext
 
         modelBuilder.Entity<Photo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Photos__3214EC07AC475CD4");
+            entity.HasKey(e => e.Id).HasName("PK__Photos__3214EC0712E811C8");
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.PhotoType)
@@ -180,9 +180,9 @@ public partial class DatingManagerContext : DbContext
 
         modelBuilder.Entity<Profile>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Profiles__3214EC070530BB2C");
+            entity.HasKey(e => e.Id).HasName("PK__Profiles__3214EC078D9F7800");
 
-            entity.HasIndex(e => e.UserId, "UQ__Profiles__1788CC4D32B1A0E2").IsUnique();
+            entity.HasIndex(e => e.UserId, "UQ__Profiles__1788CC4D7B24816C").IsUnique();
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Bio).HasMaxLength(1500);
@@ -200,20 +200,20 @@ public partial class DatingManagerContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC07AFD160C0");
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC07B9A41B88");
 
-            entity.HasIndex(e => e.Name, "UQ__Roles__737584F648717D10").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Roles__737584F60D830B02").IsUnique();
 
             entity.Property(e => e.Name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC076A28C90C");
+            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC070E8785FB");
 
             entity.HasIndex(e => e.RoleId, "IX_Users_RoleId");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534E0F4CC22").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534E0128992").IsUnique();
 
             entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
@@ -234,13 +234,15 @@ public partial class DatingManagerContext : DbContext
                     "UserInterest",
                     r => r.HasOne<Interest>().WithMany()
                         .HasForeignKey("InterestId")
-                        .HasConstraintName("FK__UserInter__Inter__628FA481"),
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__UserInter__Inter__72C60C4A"),
                     l => l.HasOne<User>().WithMany()
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK__UserInter__UserI__619B8048"),
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__UserInter__UserI__73BA3083"),
                     j =>
                     {
-                        j.HasKey("UserId", "InterestId").HasName("PK__UserInte__7580FE8A304A450D");
+                        j.HasKey("UserId", "InterestId").HasName("PK__UserInte__7580FE8AE17F847F");
                         j.ToTable("UserInterests");
                     });
         });

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Client_Datting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+862aa49d38786f1cbc42983459370bd3a070c1f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Client_Datting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Client_Datting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

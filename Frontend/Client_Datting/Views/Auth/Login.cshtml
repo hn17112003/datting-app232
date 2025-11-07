@@ -5,32 +5,38 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
-            <div class="card shadow">
+            <div class="card shadow pink-card">
                 <div class="card-body p-4">
-                    <h2 class="card-title text-center mb-4">Đăng nhập</h2>
-                    
+                    <h2 class="card-title text-center mb-4 pink-title">Đăng nhập</h2>
+
                     <div id="alertContainer"></div>
-                    
+
                     <form id="loginForm">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="email" class="form-label pink-label">Email</label>
+                            <input type="email" class="form-control pink-input" id="email" name="email" required>
                         </div>
-                        
+
                         <div class="mb-3">
-                            <label for="password" class="form-label">Mật khẩu</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <label for="password" class="form-label pink-label">Mật khẩu</label>
+                            <input type="password" class="form-control pink-input" id="password" name="password" required>
                         </div>
-                        
+
                         <div class="mb-3">
-                            <a href="/Auth/ForgotPassword" class="text-decoration-none">Quên mật khẩu?</a>
+                            <a href="/Auth/ForgotPassword" class="pink-link">Quên mật khẩu?</a>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary w-100 mb-3">Đăng nhập</button>
-                        
+
+                        <button type="submit" class="btn pink-btn w-100 mb-3">
+                            <span class="btn-text">Đăng nhập</span>
+                            <span class="btn-loading d-none">
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                Đang đăng nhập...
+                            </span>
+                        </button>
+
                         <div class="text-center">
-                            <span>Chưa có tài khoản? </span>
-                            <a href="/Auth/Register" class="text-decoration-none">Đăng ký ngay</a>
+                            <span class="pink-text">Chưa có tài khoản? </span>
+                            <a href="/Auth/Register" class="pink-link">Đăng ký ngay</a>
                         </div>
                     </form>
                 </div>
@@ -39,50 +45,277 @@
     </div>
 </div>
 
+<style>
+    .pink-card {
+        border: none;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #fff5f7 0%, #fce4ec 100%);
+        box-shadow: 0 8px 32px rgba(236, 64, 122, 0.15);
+        border: 1px solid rgba(236, 64, 122, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .pink-title {
+        color: #ec407a;
+        font-weight: 600;
+        font-size: 1.8rem;
+        text-shadow: 0 2px 4px rgba(236, 64, 122, 0.1);
+    }
+
+    .pink-btn {
+        background: linear-gradient(45deg, #ec407a, #ad1457);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 24px;
+        font-weight: 600;
+        color: white;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .pink-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 64, 122, 0.4);
+            color: white;
+        }
+
+        .pink-btn:active {
+            transform: translateY(0);
+        }
+
+        .pink-btn:disabled {
+            background: linear-gradient(45deg, #f8bbd9, #f48fb1);
+            transform: none;
+            box-shadow: none;
+        }
+
+    .pink-input {
+        border: 2px solid #f8bbd9;
+        border-radius: 12px;
+        padding: 12px 16px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+        .pink-input:focus {
+            border-color: #ec407a;
+            box-shadow: 0 0 0 0.2rem rgba(236, 64, 122, 0.25);
+            background: white;
+        }
+
+    .pink-label {
+        color: #ad1457;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .pink-text {
+        color: #ec407a;
+        font-size: 0.9rem;
+    }
+
+    .pink-link {
+        color: #ec407a;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+        .pink-link:hover {
+            color: #ad1457;
+        }
+
+        .pink-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(45deg, #ec407a, #ad1457);
+            transition: width 0.3s ease;
+        }
+
+        .pink-link:hover::after {
+            width: 100%;
+        }
+
+    body {
+        background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        border: none;
+        color: #2e7d32;
+        border-radius: 12px;
+        border-left: 4px solid #4caf50;
+    }
+
+    .alert-danger {
+        background: linear-gradient(135deg, #ffebee, #ffcdd2);
+        border: none;
+        color: #c62828;
+        border-radius: 12px;
+        border-left: 4px solid #f44336;
+    }
+
+    .btn-loading .spinner-border {
+        color: #fff;
+    }
+
+    /* Animation for card entrance */
+    .card {
+        animation: slideUp 0.5s ease-out;
+    }
+
+    @@keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Floating animation for background */
+    @@keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .pink-card {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    /* Input focus animation */
+    .pink-input {
+        position: relative;
+    }
+
+        .pink-input:focus {
+            transform: scale(1.02);
+        }
+
+    /* Heart icon decoration */
+    .pink-card::before {
+        content: '❤';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: linear-gradient(45deg, #ec407a, #ad1457);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        box-shadow: 0 4px 10px rgba(236, 64, 122, 0.3);
+    }
+</style>
+
 @section Scripts {
     <script src="~/js/apiService.js"></script>
     <script>
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const submitBtn = this.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
             const alertContainer = document.getElementById('alertContainer');
-            
-            // Disable button
+
+            // Show loading state
+            btnText.classList.add('d-none');
+            btnLoading.classList.remove('d-none');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Đang đăng nhập...';
             alertContainer.innerHTML = '';
-            
+
             try {
                 const response = await ApiService.login(email, password);
-                
+
                 // Show success message
                 alertContainer.innerHTML = `
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Đăng nhập thành công! Đang chuyển hướng...
+                        <strong>Thành công!</strong> Đăng nhập thành công! Đang chuyển hướng...
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                
+
                 // Redirect to home
                 setTimeout(() => {
                     window.location.href = '/Home/Index';
-                }, 1000);
-                
+                }, 1500);
+
             } catch (error) {
                 alertContainer.innerHTML = `
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        ${error.message}
+                        <strong>Lỗi!</strong> ${error.message}
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                     </div>
                 `;
-                
+
+                // Add shake animation to form on error
+                const card = document.querySelector('.pink-card');
+                card.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    card.style.animation = 'float 6s ease-in-out infinite';
+                }, 500);
+
+            } finally {
+                // Reset button state
+                btnText.classList.remove('d-none');
+                btnLoading.classList.add('d-none');
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Đăng nhập';
             }
+        });
+
+        // Add shake animation for errors
+        const style = document.createElement('style');
+        style.textContent = `
+            @@keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.pink-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+            });
+
+            // Add floating labels effect
+            const labels = document.querySelectorAll('.pink-label');
+            labels.forEach(label => {
+                label.style.transition = 'all 0.3s ease';
+            });
         });
     </script>
 }
-

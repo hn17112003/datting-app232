@@ -1,110 +1,58 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\",
+  "WorkspaceRootPath": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\blockscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\blockscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\recommendationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\recommendationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\conversationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\conversationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\dating_manager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:dating_manager.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\validation\\profilevalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:validation\\profilevalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\data_datting.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:data_datting.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\interestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\interestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\photoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\photoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\dtos\\photodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:dtos\\photodtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\models\\photo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:models\\photo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\dtos\\profiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:dtos\\profiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\userinterestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\userinterestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\validation\\authvalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:validation\\authvalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\recommendationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\recommendationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\dtos\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:dtos\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\dtos\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:dtos\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\photoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\photoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|c:\\project\\prn232\\backend\\dating_manager\\models\\datingmanagercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:models\\datingmanagercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\matchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\matchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\likescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\conversationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\conversationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\analyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|d:\\fu\\prn232\\code\\project\\datting-app232\\backend\\dating_manager\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05A175CC-BA80-4020-96DB-661C7E210F47}|Dating_Manager.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -114,328 +62,176 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:8:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ConversationsController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\ConversationsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ConversationsController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\ConversationsController.cs",
-              "RelativeToolTip": "Controllers\\ConversationsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UserInterestsController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\UserInterestsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserInterestsController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\UserInterestsController.cs",
+              "RelativeToolTip": "Controllers\\UserInterestsController.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T18:08:46.975Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwDAAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T16:44:42.116Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-03T16:23:46.584Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAjwKMAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:21:02.143Z",
+              "WhenOpened": "2025-11-07T10:24:40.808Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAwwE4AAAAvAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "RecommendationsController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\RecommendationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RecommendationsController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\RecommendationsController.cs",
+              "RelativeToolTip": "Controllers\\RecommendationsController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowBYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:21:12.917Z"
+              "WhenOpened": "2025-11-07T10:24:25.086Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RecommendationsController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\RecommendationsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RecommendationsController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\RecommendationsController.cs",
-              "RelativeToolTip": "Controllers\\RecommendationsController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAwwCkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ProfilesController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\ProfilesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProfilesController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\ProfilesController.cs",
+              "RelativeToolTip": "Controllers\\ProfilesController.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAcwHcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T16:47:40.053Z",
+              "WhenOpened": "2025-11-07T10:24:12.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PhotosController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\PhotosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PhotosController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\PhotosController.cs",
+              "RelativeToolTip": "Controllers\\PhotosController.cs",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAcwHoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T10:23:58.741Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Services\\EmailService.cs",
-              "RelativeDocumentMoniker": "Services\\EmailService.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Services\\EmailService.cs",
-              "RelativeToolTip": "Services\\EmailService.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAAwJMAAAAAAAAAAAAAAA==",
+              "Title": "MessagesController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\MessagesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MessagesController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\MessagesController.cs",
+              "RelativeToolTip": "Controllers\\MessagesController.cs",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAIwEAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T17:34:55.096Z"
+              "WhenOpened": "2025-11-07T10:23:47.308Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Dating_Manager.csproj",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Dating_Manager.csproj",
-              "RelativeDocumentMoniker": "Dating_Manager.csproj",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Dating_Manager.csproj",
-              "RelativeToolTip": "Dating_Manager.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-06T17:31:16.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "JwtService.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Services\\JwtService.cs",
-              "RelativeDocumentMoniker": "Services\\JwtService.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Services\\JwtService.cs",
-              "RelativeToolTip": "Services\\JwtService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAqwCUAAAABAAAAAAAAAA==",
+              "Title": "MatchesController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\MatchesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MatchesController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\MatchesController.cs",
+              "RelativeToolTip": "Controllers\\MatchesController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAwwDQAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:22:19.737Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ProfilesController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\ProfilesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProfilesController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\ProfilesController.cs",
-              "RelativeToolTip": "Controllers\\ProfilesController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAmwDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:06:50.482Z"
+              "WhenOpened": "2025-11-07T10:23:34.185Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBEAAAAeAAAAAAAAAA==",
+              "Title": "LikesController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\LikesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LikesController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\LikesController.cs",
+              "RelativeToolTip": "Controllers\\LikesController.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAIwFYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T16:35:19.642Z"
+              "WhenOpened": "2025-11-07T10:23:22.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ConversationsController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\ConversationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ConversationsController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\ConversationsController.cs",
+              "RelativeToolTip": "Controllers\\ConversationsController.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAIwFMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T10:23:07.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T08:43:23.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BlocksController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\BlocksController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BlocksController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\BlocksController.cs",
+              "RelativeToolTip": "Controllers\\BlocksController.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAUwIQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-07T10:22:14.38Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "ProfileValidators.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Validation\\ProfileValidators.cs",
-              "RelativeDocumentMoniker": "Validation\\ProfileValidators.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Validation\\ProfileValidators.cs",
-              "RelativeToolTip": "Validation\\ProfileValidators.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "AnalyticsController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\AnalyticsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AnalyticsController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\AnalyticsController.cs",
+              "RelativeToolTip": "Controllers\\AnalyticsController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T16:55:26.042Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "PhotoDtos.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\PhotoDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\PhotoDtos.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\PhotoDtos.cs",
-              "RelativeToolTip": "DTOs\\PhotoDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:38:11.922Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "InterestsController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\InterestsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\InterestsController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\InterestsController.cs",
-              "RelativeToolTip": "Controllers\\InterestsController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBkAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:40:02.494Z"
+              "WhenOpened": "2025-11-07T10:22:53.436Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "Data_Datting.sql",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Data_Datting.sql",
-              "RelativeDocumentMoniker": "Data_Datting.sql",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Data_Datting.sql",
-              "RelativeToolTip": "Data_Datting.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-11-06T16:24:46.674Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "LikesController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\LikesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\LikesController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\LikesController.cs",
-              "RelativeToolTip": "Controllers\\LikesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAdAAAAAAAAAA==",
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:47:58.528Z"
+              "WhenOpened": "2025-11-07T10:22:48.02Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Photo.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Models\\Photo.cs",
-              "RelativeDocumentMoniker": "Models\\Photo.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Models\\Photo.cs",
-              "RelativeToolTip": "Models\\Photo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAQwMIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:29:52.869Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ProfileDtos.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\ProfileDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\ProfileDtos.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\ProfileDtos.cs",
-              "RelativeToolTip": "DTOs\\ProfileDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:29:24.955Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AnalyticsController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\AnalyticsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AnalyticsController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\AnalyticsController.cs",
-              "RelativeToolTip": "Controllers\\AnalyticsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T16:16:13.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "PhotosController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\PhotosController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PhotosController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\PhotosController.cs",
-              "RelativeToolTip": "Controllers\\PhotosController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAiwBMAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:20:01.744Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "AuthValidators.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Validation\\AuthValidators.cs",
-              "RelativeDocumentMoniker": "Validation\\AuthValidators.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Validation\\AuthValidators.cs",
-              "RelativeToolTip": "Validation\\AuthValidators.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAA8wFgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:23:09.259Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "UserDtos.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\UserDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\UserDtos.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\UserDtos.cs",
-              "RelativeToolTip": "DTOs\\UserDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:21:10.548Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAkwA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:20:50.968Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-03T16:25:59.595Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "AuthDtos.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\AuthDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\AuthDtos.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\DTOs\\AuthDtos.cs",
-              "RelativeToolTip": "DTOs\\AuthDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:21:09.389Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "DatingManagerContext.cs",
-              "DocumentMoniker": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Models\\DatingManagerContext.cs",
-              "RelativeDocumentMoniker": "Models\\DatingManagerContext.cs",
-              "ToolTip": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\Models\\DatingManagerContext.cs",
-              "RelativeToolTip": "Models\\DatingManagerContext.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:21:05.818Z"
+              "WhenOpened": "2025-11-07T08:43:25.909Z",
+              "EditorCaption": ""
             }
           ]
         }

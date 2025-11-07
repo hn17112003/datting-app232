@@ -1,66 +1,278 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Client_Datting</title>
+    <title>@ViewData["Title"] - LoveConnect</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Client_Datting.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff4b91;
+            --secondary-color: #ff8fab;
+            --dark-color: #333333;
+            --light-color: #ffffff;
+            --gradient: linear-gradient(135deg, #ff4b91 0%, #ff8fab 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* Header Styles - Giảm chiều cao */
+        .navbar {
+            background: var(--gradient) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--light-color) !important;
+            display: flex;
+            align-items: center;
+        }
+
+            .navbar-brand i {
+                margin-right: 8px;
+                font-size: 1.3rem;
+            }
+
+        .navbar-nav .nav-link {
+            color: var(--light-color) !important;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem !important;
+            border-radius: 16px;
+            margin: 0 2px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+            .navbar-nav .nav-link:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-1px);
+            }
+
+        .navbar-toggler {
+            border: none;
+            color: var(--light-color) !important;
+            padding: 0.25rem 0.5rem;
+        }
+
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item {
+            padding: 0.4rem 1rem;
+        }
+
+            .dropdown-item:hover {
+                background-color: #f8f9fa;
+            }
+
+        .user-email {
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Footer Styles - Giảm chiều cao đáng kể */
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 1.5rem 0 0.8rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+            .footer h5 {
+                color: var(--secondary-color);
+                margin-bottom: 0.8rem;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+            .footer a {
+                color: #cccccc;
+                text-decoration: none;
+                transition: color 0.3s ease;
+                font-size: 0.85rem;
+            }
+
+                .footer a:hover {
+                    color: var(--secondary-color);
+                }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 0.5rem;
+        }
+
+            .footer-links li {
+                margin-bottom: 0.3rem;
+            }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 0.8rem;
+        }
+
+            .social-links a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.1);
+                transition: all 0.3s ease;
+                font-size: 0.9rem;
+            }
+
+                .social-links a:hover {
+                    background-color: var(--primary-color);
+                    transform: translateY(-2px);
+                }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 0.8rem;
+            margin-top: 1.2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #aaaaaa;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Responsive adjustments */
+        @@media (max-width: 991.98px) {
+            .navbar-nav .nav-link
+
+        {
+            margin: 2px 0;
+        }
+
+        .navbar-collapse {
+            padding-top: 0.8rem;
+        }
+
+        .footer {
+            padding: 1.2rem 0 0.6rem;
+        }
+
+            .footer .col-md-4,
+            .footer .col-md-2,
+            .footer .col-md-3 {
+                margin-bottom: 1rem;
+            }
+
+        }
+
+        @@media (max-width: 575.98px) {
+            .footer
+
+        {
+            text-align: center;
+        }
+
+        .social-links {
+            justify-content: center;
+        }
+
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Client_Datting</a>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-heart"></i> LoveConnect
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home me-1"></i> Trang chủ
+                            </a>
                         </li>
                         <li class="nav-item auth-profile" style="display: none;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="Index">Hồ sơ</a>
+                            <a class="nav-link" asp-area="" asp-controller="Profile" asp-action="Index">
+                                <i class="fas fa-user me-1"></i> Hồ sơ
+                            </a>
                         </li>
                         <li class="nav-item auth-profile" style="display: none;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Suggestions">Gợi ý</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Suggestions">
+                                <i class="fas fa-lightbulb me-1"></i> Gợi ý
+                            </a>
                         </li>
                         <li class="nav-item auth-customer" style="display: none;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Discover">🔍 Khám phá</a>
+                            <a class="nav-link" asp-area="" asp-controller="Customer" asp-action="Discover">
+                                <i class="fas fa-search me-1"></i> Khám phá
+                            </a>
                         </li>
                         <li class="nav-item auth-customer" style="display: none;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Matches">❤️ Matches</a>
+                            <a class="nav-link" asp-area="" asp-controller="Customer" asp-action="Matches">
+                                <i class="fas fa-heart me-1"></i> Matches
+                            </a>
                         </li>
                         <li class="nav-item auth-customer" style="display: none;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Messages">💬 Tin nhắn</a>
-                        </li>
-                        <li class="nav-item auth-admin" style="display: none;">
-                            <a class="nav-link text-dark text-danger" asp-area="" asp-controller="Admin" asp-action="Index">
-                                <strong>⚙️ Admin</strong>
+                            <a class="nav-link" asp-area="" asp-controller="Customer" asp-action="Messages">
+                                <i class="fas fa-comments me-1"></i> Tin nhắn
                             </a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item auth-login" style="display: none;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Đăng nhập</a>
+                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Login">
+                                <i class="fas fa-sign-in-alt me-1"></i> Đăng nhập
+                            </a>
                         </li>
                         <li class="nav-item auth-login" style="display: none;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Đăng ký</a>
-                        </li>
-                        <li class="nav-item auth-login" style="display: none;">
-                            <a class="nav-link text-dark text-danger" asp-area="" asp-controller="Admin" asp-action="Login">
-                                <strong>⚙️ Admin Login</strong>
+                            <a class="nav-link" asp-area="" asp-controller="Auth" asp-action="Register">
+                                <i class="fas fa-user-plus me-1"></i> Đăng ký
                             </a>
                         </li>
                         <li class="nav-item dropdown auth-logout" style="display: none;">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="user-email">User</span>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> <span class="user-email">User</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#" onclick="AuthHelper.handleLogout(); return false;">Đăng xuất</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="AuthHelper.handleLogout(); return false;">
+                                        <i class="fas fa-sign-out-alt me-1"></i> Đăng xuất
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -68,15 +280,27 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-white" style="background: linear-gradient(135deg, #ff4b91 0%, #ff8fab 100%); padding: 1rem 0; margin-top: auto;">
         <div class="container">
-            &copy; 2025 - Client_Datting - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    &copy; 2025 - LoveConnect - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white" style="text-decoration: none;">Chính sách bảo mật</a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links mt-2 mt-md-0">
+                        <a href="#" class="text-white me-3" style="text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white" style="text-decoration: none;"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

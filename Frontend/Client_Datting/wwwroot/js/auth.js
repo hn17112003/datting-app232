@@ -8,12 +8,12 @@ const AuthHelper = {
         const profileLinks = document.querySelectorAll('.auth-profile');
         const customerLinks = document.querySelectorAll('.auth-customer');
         const adminLinks = document.querySelectorAll('.auth-admin');
-        
+
         if (isAuthenticated) {
             loginLinks.forEach(link => link.style.display = 'none');
             logoutLinks.forEach(link => link.style.display = 'block');
             profileLinks.forEach(link => link.style.display = 'block');
-            
+
             // Load user info và check roles
             await this.loadUserInfo();
         } else {
@@ -24,7 +24,7 @@ const AuthHelper = {
             adminLinks.forEach(link => link.style.display = 'none');
         }
     },
-    
+
     // Load thông tin user
     async loadUserInfo() {
         try {
@@ -33,17 +33,17 @@ const AuthHelper = {
             userInfoElements.forEach(el => {
                 el.textContent = user.email;
             });
-            
+
             // Check và hiển thị menu dựa trên role
             const roleName = user.roleName || '';
             const isAdmin = roleName === 'Admin' || roleName === 'admin';
             const isCustomer = roleName === 'Customer' || roleName === 'customer' || !isAdmin;
-            
+
             const adminLinks = document.querySelectorAll('.auth-admin');
             adminLinks.forEach(link => {
                 link.style.display = isAdmin ? 'block' : 'none';
             });
-            
+
             const customerLinks = document.querySelectorAll('.auth-customer');
             customerLinks.forEach(link => {
                 link.style.display = isCustomer ? 'block' : 'none';
@@ -56,7 +56,7 @@ const AuthHelper = {
             customerLinks.forEach(link => link.style.display = 'none');
         }
     },
-    
+
     // Xử lý đăng xuất
     handleLogout() {
         if (confirm('Bạn có chắc muốn đăng xuất?')) {
@@ -66,10 +66,9 @@ const AuthHelper = {
 };
 
 // Khởi tạo khi trang load
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function () {
     await AuthHelper.updateAuthUI();
 });
 
 // Export
 window.AuthHelper = AuthHelper;
-

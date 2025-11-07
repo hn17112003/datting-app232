@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xU5EUopuD9NH3stmM5lnZxhw7G0RTIocS+a8f+kWm5A=",
+  "Hash": "hFxZXoE60VCEscTotrFkBUrzFpRn6YkQ557jkTanTZM=",
   "Source": "Dating_Manager",
   "BasePath": "_content/Dating_Manager",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Dating_Manager\\wwwroot",
       "Source": "Dating_Manager",
-      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "ContentRoot": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\",
       "BasePath": "_content/Dating_Manager",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
+      "Identity": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
       "SourceId": "Dating_Manager",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "ContentRoot": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\",
       "BasePath": "_content/Dating_Manager",
       "RelativePath": "uploads/242ea7df-fed5-4549-8263-9b1510ff51db#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png"
     },
     {
-      "Identity": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
+      "Identity": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
       "SourceId": "Dating_Manager",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "ContentRoot": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\",
       "BasePath": "_content/Dating_Manager",
       "RelativePath": "uploads/51557f8e-d20e-4e82-8a99-b20fe5d97f49#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -59,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png"
     },
     {
-      "Identity": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
+      "Identity": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
       "SourceId": "Dating_Manager",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\",
+      "ContentRoot": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\",
       "BasePath": "_content/Dating_Manager",
       "RelativePath": "uploads/a53ede48-b3e8-4eb1-887d-4280ae14ccb0#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -83,7 +83,7 @@
   "Endpoints": [
     {
       "Route": "uploads/242ea7df-fed5-4549-8263-9b1510ff51db.oynqssbpu1.png",
-      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
+      "AssetFile": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -104,7 +104,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Nov 2025 19:11:10 GMT"
+          "Value": "Fri, 07 Nov 2025 07:28:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -128,7 +128,7 @@
     },
     {
       "Route": "uploads/242ea7df-fed5-4549-8263-9b1510ff51db.png",
-      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
+      "AssetFile": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\242ea7df-fed5-4549-8263-9b1510ff51db.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -149,7 +149,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Nov 2025 19:11:10 GMT"
+          "Value": "Fri, 07 Nov 2025 07:28:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -165,7 +165,7 @@
     },
     {
       "Route": "uploads/51557f8e-d20e-4e82-8a99-b20fe5d97f49.jsfxeq3ztx.png",
-      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
+      "AssetFile": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -186,7 +186,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Nov 2025 19:11:28 GMT"
+          "Value": "Fri, 07 Nov 2025 07:28:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -210,7 +210,7 @@
     },
     {
       "Route": "uploads/51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
-      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
+      "AssetFile": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\51557f8e-d20e-4e82-8a99-b20fe5d97f49.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -231,7 +231,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Nov 2025 19:11:28 GMT"
+          "Value": "Fri, 07 Nov 2025 07:28:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -247,7 +247,7 @@
     },
     {
       "Route": "uploads/a53ede48-b3e8-4eb1-887d-4280ae14ccb0.bgrzizjxan.png",
-      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
+      "AssetFile": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -268,7 +268,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Nov 2025 19:11:23 GMT"
+          "Value": "Fri, 07 Nov 2025 07:28:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -292,7 +292,7 @@
     },
     {
       "Route": "uploads/a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
-      "AssetFile": "C:\\Project\\PRN232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
+      "AssetFile": "D:\\FU\\PRN232\\code\\Project\\datting-app232\\Backend\\Dating_Manager\\wwwroot\\uploads\\a53ede48-b3e8-4eb1-887d-4280ae14ccb0.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -313,7 +313,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 06 Nov 2025 19:11:23 GMT"
+          "Value": "Fri, 07 Nov 2025 07:28:49 GMT"
         },
         {
           "Name": "Cache-Control",

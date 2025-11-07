@@ -38,7 +38,7 @@
         if (!ApiService.isAuthenticated()) {
             window.location.href = '/Auth/Login';
         }
-        
+
         // Check if user is admin - redirect to admin panel
         (async function() {
             try {
@@ -53,14 +53,14 @@
                 console.error('Error checking role:', error);
             }
         })();
-        
+
         // Load matches
         async function loadMatches() {
             const container = document.getElementById('matchesContainer');
-            
+
             try {
                 const matches = await ApiService.getMyMatches();
-                
+
                 if (matches.length === 0) {
                     container.innerHTML = `
                         <div class="card">
@@ -73,28 +73,28 @@
                     `;
                     return;
                 }
-                
+
                 // Load profile và photos cho mỗi match
                 const matchesWithDetails = await Promise.all(matches.map(async (match) => {
                     let profile = null;
                     let photos = [];
-                    
+
                     try {
                         profile = await ApiService.getProfileByUserId(match.userId);
                         photos = await ApiService.getPhotosByUser(match.userId);
                     } catch (error) {
                         console.error('Error loading details for user:', match.userId, error);
                     }
-                    
+
                     return { ...match, profile, photos };
                 }));
-                
+
                 container.innerHTML = `
                     <div class="row">
                         ${matchesWithDetails.map(match => {
                             const mainPhoto = match.photos.find(p => p.isMain) || match.photos[0];
                             const age = match.profile?.dateOfBirth ? calculateAge(match.profile.dateOfBirth) : null;
-                            
+
                             return `
                                 <div class="col-md-4 mb-4">
                                     <div class="card h-100 shadow-sm">
@@ -132,7 +132,7 @@
                 container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
             }
         }
-        
+
         function calculateAge(dateOfBirth) {
             const today = new Date();
             const birthDate = new Date(dateOfBirth);
@@ -143,7 +143,7 @@
             }
             return age;
         }
-        
+
         async function startConversation(userId, matchId) {
             try {
                 // Tạo hoặc lấy conversation
@@ -154,10 +154,10 @@
                 showAlert('error', 'Lỗi: ' + error.message);
             }
         }
-        
+
         async function blockUser(userId) {
             if (!confirm('Bạn có chắc muốn chặn người dùng này? Hành động này sẽ xóa match và tin nhắn giữa hai bạn.')) return;
-            
+
             try {
                 const response = await ApiService.blockUser(userId);
                 showAlert('success', response.message || 'Đã chặn người dùng!');
@@ -167,7 +167,7 @@
                 showAlert('error', 'Lỗi: ' + error.message);
             }
         }
-        
+
         function showAlert(type, message) {
             const alertContainer = document.getElementById('alertContainer');
             const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
@@ -178,7 +178,7 @@
                 </div>
             `;
         }
-        
+
         // Load on page load
         loadMatches();
     </script>

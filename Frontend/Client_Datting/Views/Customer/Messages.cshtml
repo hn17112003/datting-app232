@@ -64,12 +64,12 @@
         let currentConversationId = null;
         let currentRecipientId = null;
         let conversations = [];
-        
+
         // Check authentication and role
         if (!ApiService.isAuthenticated()) {
             window.location.href = '/Auth/Login';
         }
-        
+
         // Check if user is admin - redirect to admin panel
         (async function() {
             try {
@@ -84,17 +84,17 @@
                 console.error('Error checking role:', error);
             }
         })();
-        
+
         // Get conversation ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const conversationIdFromUrl = urlParams.get('conversationId');
-        
+
         // Load conversations
         async function loadConversations() {
             try {
                 conversations = await ApiService.getConversations();
                 displayConversations();
-                
+
                 // Auto-select conversation from URL
                 if (conversationIdFromUrl) {
                     selectConversation(conversationIdFromUrl);
@@ -105,11 +105,11 @@
                 `;
             }
         }
-        
+
         // Display conversations
         async function displayConversations() {
             const container = document.getElementById('conversationsList');
-            
+
             if (conversations.length === 0) {
                 container.innerHTML = `
                     <div class="p-3 text-center text-muted">
@@ -118,7 +118,7 @@
                 `;
                 return;
             }
-            
+
             // Load profiles for all conversations
             const conversationsWithProfiles = await Promise.all(conversations.map(async (conv) => {
                 let profile = null;
@@ -129,12 +129,12 @@
                 }
                 return { ...conv, profile };
             }));
-            
+
             container.innerHTML = conversationsWithProfiles.map(conv => {
                 const displayName = conv.profile?.knownAs || conv.otherUserId.substring(0, 8) + '...';
                 return `
-                    <div class="list-group-item list-group-item-action ${conv.id === currentConversationId ? 'active' : ''}" 
-                         onclick="selectConversation('${conv.id}', '${conv.otherUserId}')" 
+                    <div class="list-group-item list-group-item-action ${conv.id === currentConversationId ? 'active' : ''}"
+                         onclick="selectConversation('${conv.id}', '${conv.otherUserId}')"
                          style="cursor: pointer;">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">${displayName}</h6>
@@ -144,24 +144,24 @@
                 `;
             }).join('');
         }
-        
+
         // Select conversation
         async function selectConversation(conversationId, recipientId = null) {
             currentConversationId = conversationId;
-            
+
             if (!recipientId) {
                 const conv = conversations.find(c => c.id === conversationId);
                 if (conv) recipientId = conv.otherUserId;
             }
-            
+
             currentRecipientId = recipientId;
-            
+
             // Update UI
             document.querySelectorAll('.list-group-item').forEach(item => {
                 item.classList.remove('active');
             });
             event?.currentTarget?.classList.add('active');
-            
+
             // Load profile for header
             let profile = null;
             try {
@@ -169,35 +169,35 @@
             } catch (error) {
                 console.error('Error loading profile:', error);
             }
-            
+
             const displayName = profile?.knownAs || recipientId.substring(0, 8) + '...';
-            
+
             // Load messages
             await loadMessages(conversationId);
-            
+
             // Show input
             document.getElementById('messageInputContainer').style.display = 'block';
             document.getElementById('conversationHeader').innerHTML = `
                 <h5 class="mb-0">Cuộc hội thoại với ${displayName}</h5>
             `;
         }
-        
+
         // Load messages
         async function loadMessages(conversationId) {
             const container = document.getElementById('messagesContainer');
             container.innerHTML = '<div class="text-center"><div class="spinner-border"></div></div>';
-            
+
             try {
                 const messages = await ApiService.getMessages(conversationId, 0, 100);
-                
+
                 // Get current user
                 const currentUser = await ApiService.getCurrentUser();
-                
+
                 if (messages.length === 0) {
                     container.innerHTML = '<div class="text-center text-muted p-3">Chưa có tin nhắn nào</div>';
                     return;
                 }
-                
+
                 container.innerHTML = messages.map(msg => {
                     const isMe = msg.senderId === currentUser.id;
                     return `
@@ -211,32 +211,32 @@
                         </div>
                     `;
                 }).join('');
-                
+
                 // Scroll to bottom
                 container.scrollTop = container.scrollHeight;
             } catch (error) {
                 container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
             }
         }
-        
+
         // Send message
         document.getElementById('messageForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const content = document.getElementById('messageInput').value.trim();
             if (!content || !currentConversationId || !currentRecipientId) return;
-            
+
             const submitBtn = this.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Đang gửi...';
-            
+
             try {
                 await ApiService.sendMessage(currentConversationId, currentRecipientId, content);
                 document.getElementById('messageInput').value = '';
-                
+
                 // Reload messages
                 await loadMessages(currentConversationId);
-                
+
                 // Reload conversations to update last message time
                 await loadConversations();
             } catch (error) {
@@ -246,15 +246,15 @@
                 submitBtn.textContent = 'Gửi';
             }
         });
-        
+
         function formatDate(dateString) {
             if (!dateString) return '';
             const date = new Date(dateString);
             return date.toLocaleString('vi-VN');
         }
-        
+
         // Load on page load
         loadConversations();
-    </script>
+</script>
 }
 

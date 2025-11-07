@@ -66,12 +66,12 @@
     <script src="~/js/apiService.js"></script>
     <script>
         let myUserId = null;
-        
+
         // Check authentication and role
         if (!ApiService.isAuthenticated()) {
             window.location.href = '/Auth/Login';
         }
-        
+
         // Check if user is admin - redirect to admin panel
         (async function() {
             try {
@@ -86,7 +86,7 @@
                 console.error('Error checking role:', error);
             }
         })();
-        
+
         // Get current user ID
         async function getMyUserId() {
             try {
@@ -97,22 +97,22 @@
                 console.error('Error getting user ID:', error);
             }
         }
-        
+
         // Load photos
         async function loadPhotos() {
             if (!myUserId) return;
-            
+
             const container = document.getElementById('photosContainer');
             container.innerHTML = '<div class="text-center"><div class="spinner-border"></div></div>';
-            
+
             try {
                 const photos = await ApiService.getPhotosByUser(myUserId);
-                
+
                 if (photos.length === 0) {
                     container.innerHTML = '<div class="alert alert-info">Chưa có ảnh nào. Hãy tải ảnh lên!</div>';
                     return;
                 }
-                
+
                 container.innerHTML = `
                     <div class="row">
                         ${photos.map(photo => `
@@ -141,26 +141,26 @@
                 container.innerHTML = `<div class="alert alert-danger">Lỗi: ${error.message}</div>`;
             }
         }
-        
+
         // Upload photo
         document.getElementById('uploadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const file = document.getElementById('photoFile').files[0];
             const photoType = document.getElementById('photoType').value.trim() || null;
-            
+
             if (!file) return;
-            
+
             const submitBtn = this.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Đang tải...';
-            
+
             try {
                 const response = await ApiService.uploadPhoto(file, photoType);
                 showAlert('success', 'Tải ảnh lên thành công!');
                 document.getElementById('uploadForm').reset();
                 document.getElementById('imagePreview').style.display = 'none';
-                
+
                 // Reload photos immediately
                 await loadPhotos();
             } catch (error) {
@@ -170,11 +170,11 @@
                 submitBtn.textContent = 'Tải lên';
             }
         });
-        
+
         // Set main photo
         async function setMainPhoto(photoId) {
             if (!confirm('Đặt ảnh này làm ảnh chính?')) return;
-            
+
             try {
                 await ApiService.setMainPhoto(photoId);
                 showAlert('success', 'Đã đặt làm ảnh chính!');
@@ -183,11 +183,11 @@
                 showAlert('error', 'Lỗi: ' + error.message);
             }
         }
-        
+
         // Delete photo
         async function deletePhoto(photoId) {
             if (!confirm('Bạn có chắc muốn xóa ảnh này?')) return;
-            
+
             try {
                 await ApiService.deletePhoto(photoId);
                 showAlert('success', 'Đã xóa ảnh!');
@@ -196,7 +196,7 @@
                 showAlert('error', 'Lỗi: ' + error.message);
             }
         }
-        
+
         function showAlert(type, message) {
             const alertContainer = document.getElementById('alertContainer');
             const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
@@ -207,13 +207,13 @@
                 </div>
             `;
         }
-        
+
         // Preview image before upload
         function previewImage(event) {
             const file = event.target.files[0];
             const preview = document.getElementById('imagePreview');
             const previewImg = document.getElementById('previewImg');
-            
+
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -225,7 +225,7 @@
                 preview.style.display = 'none';
             }
         }
-        
+
         // Initialize
         getMyUserId();
     </script>

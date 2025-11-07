@@ -6,42 +6,346 @@
     <div class="row">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>🔍 Khám phá</h2>
                 <div>
-                    <a href="/Customer/Matches" class="btn btn-outline-primary me-2">❤️ Matches</a>
-                    <a href="/Customer/Messages" class="btn btn-outline-primary">💬 Tin nhắn</a>
+                    <h2 class="elegant-title">✨ Khám phá</h2>
+                    <p class="elegant-subtitle">Gặp gỡ những người phù hợp với bạn</p>
+                </div>
+                <div class="navigation-buttons">
+                    <a href="/Customer/Matches" class="btn elegant-btn-outline me-2">
+                        <i class="fas fa-heart me-1"></i>Matches
+                    </a>
+                    <a href="/Customer/Messages" class="btn elegant-btn-outline">
+                        <i class="fas fa-comments me-1"></i>Tin nhắn
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div id="alertContainer"></div>
-    
+
     <!-- User Card -->
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-lg-6 col-xl-5 offset-lg-3 offset-xl-3">
             <div id="userCardContainer">
-                <div class="text-center">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Đang tải...</span>
+                <div class="text-center py-5">
+                    <div class="elegant-spinner">
+                        <div class="spinner-border text-pink" role="status">
+                            <span class="visually-hidden">Đang tải...</span>
+                        </div>
                     </div>
+                    <p class="elegant-loading-text mt-3">Đang tìm kiếm người phù hợp...</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<style>
+    /* Color Variables */
+    :root {
+        --primary-pink: #ec407a;
+        --soft-pink: #f8bbd9;
+        --dark-pink: #ad1457;
+        --light-pink: #fce4ec;
+        --cream: #faf3f0;
+        --gold: #d4af37;
+        --charcoal: #37474f;
+    }
+
+    body {
+        background: linear-gradient(135deg, var(--cream) 0%, var(--light-pink) 50%, #ffffff 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+    }
+
+    .elegant-title {
+        color: var(--charcoal);
+        font-weight: 300;
+        font-size: 2.5rem;
+        margin-bottom: 0.25rem;
+        background: linear-gradient(45deg, var(--charcoal), var(--dark-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .elegant-subtitle {
+        color: var(--dark-pink);
+        font-weight: 300;
+        font-size: 1.1rem;
+        opacity: 0.8;
+        margin: 0;
+    }
+
+    .elegant-btn-outline {
+        border: 1.5px solid var(--primary-pink);
+        border-radius: 25px;
+        padding: 10px 24px;
+        font-weight: 400;
+        color: var(--primary-pink);
+        background: transparent;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.95rem;
+    }
+
+        .elegant-btn-outline:hover {
+            background: var(--primary-pink);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(236, 64, 122, 0.3);
+        }
+
+    .elegant-card {
+        border: none;
+        border-radius: 20px;
+        background: white;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: all 0.4s ease;
+        border: 1px solid rgba(236, 64, 122, 0.1);
+    }
+
+        .elegant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+    .card-img-container {
+        height: 450px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .elegant-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+
+    .default-avatar {
+        background: linear-gradient(135deg, var(--light-pink), var(--soft-pink));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+        .default-avatar i {
+            opacity: 0.8;
+        }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    .card-title {
+        color: var(--charcoal);
+        font-weight: 400;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--light-pink);
+        padding-bottom: 0.5rem;
+    }
+
+    .card-text {
+        color: var(--charcoal);
+        font-weight: 300;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+
+    .user-info {
+        margin-bottom: 1.5rem;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        color: var(--charcoal);
+    }
+
+        .info-item i {
+            color: var(--primary-pink);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .btn-pass {
+        background: transparent;
+        border: 1.5px solid #e0e0e0;
+        border-radius: 50px;
+        padding: 12px 30px;
+        color: #666;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        flex: 1;
+    }
+
+        .btn-pass:hover {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+        }
+
+    .btn-like {
+        background: linear-gradient(45deg, var(--primary-pink), var(--dark-pink));
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        color: white;
+        font-weight: 400;
+        transition: all 0.3s ease;
+        flex: 1;
+    }
+
+        .btn-like:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 64, 122, 0.4);
+            background: linear-gradient(45deg, var(--dark-pink), var(--primary-pink));
+        }
+
+    .elegant-spinner .spinner-border {
+        width: 3rem;
+        height: 3rem;
+        border-width: 2px;
+    }
+
+    .text-pink {
+        color: var(--primary-pink) !important;
+    }
+
+    .elegant-loading-text {
+        color: var(--dark-pink);
+        font-weight: 300;
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        border: none;
+        color: #2e7d32;
+        border-radius: 12px;
+        border-left: 4px solid #4caf50;
+    }
+
+    .alert-danger {
+        background: linear-gradient(135deg, #ffebee, #ffcdd2);
+        border: none;
+        color: #c62828;
+        border-radius: 12px;
+        border-left: 4px solid #f44336;
+    }
+
+    .no-users-card {
+        background: white;
+        border-radius: 20px;
+        padding: 4rem 2rem;
+        text-align: center;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .no-users-icon {
+        font-size: 4rem;
+        color: var(--soft-pink);
+        margin-bottom: 1.5rem;
+    }
+
+    .no-users-title {
+        color: var(--charcoal);
+        font-weight: 300;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .no-users-text {
+        color: #666;
+        font-weight: 300;
+        margin-bottom: 2rem;
+    }
+
+    .btn-refresh {
+        background: linear-gradient(45deg, var(--primary-pink), var(--dark-pink));
+        border: none;
+        border-radius: 25px;
+        padding: 12px 30px;
+        color: white;
+        font-weight: 400;
+        transition: all 0.3s ease;
+    }
+
+        .btn-refresh:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 64, 122, 0.4);
+        }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .container-fluid {
+            padding: 0 15px;
+        }
+
+        .d-flex {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .elegant-title {
+            font-size: 2rem;
+        }
+
+        .card-img-container {
+            height: 350px;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+    }
+</style>
+
 @section Scripts {
     <script src="~/js/apiService.js"></script>
     <script>
         let currentUsers = [];
         let currentIndex = 0;
-        
+
         // Check authentication and role
         if (!ApiService.isAuthenticated()) {
             window.location.href = '/Auth/Login';
         }
-        
+
         // Check if user is admin - redirect to admin panel
         (async function() {
             try {
@@ -56,7 +360,7 @@
                 console.error('Error checking role:', error);
             }
         })();
-        
+
         // Load recommendations
         async function loadRecommendations() {
             try {
@@ -71,11 +375,11 @@
                 `;
             }
         }
-        
+
         // Display current user
         async function displayCurrentUser() {
             const container = document.getElementById('userCardContainer');
-            
+
             if (currentIndex >= currentUsers.length) {
                 container.innerHTML = `
                     <div class="card">
@@ -88,9 +392,9 @@
                 `;
                 return;
             }
-            
+
             const user = currentUsers[currentIndex];
-            
+
             // Get profile
             let profile = null;
             try {
@@ -98,7 +402,7 @@
             } catch (error) {
                 console.error('Không thể load profile:', error);
             }
-            
+
             // Get photos
             let photos = [];
             try {
@@ -106,10 +410,10 @@
             } catch (error) {
                 console.error('Không thể load photos:', error);
             }
-            
+
             const mainPhoto = photos.find(p => p.isMain) || photos[0];
             const age = profile?.dateOfBirth ? calculateAge(profile.dateOfBirth) : null;
-            
+
             container.innerHTML = `
                 <div class="card shadow-lg">
                     ${mainPhoto ? `
@@ -139,7 +443,7 @@
                 </div>
             `;
         }
-        
+
         function calculateAge(dateOfBirth) {
             const today = new Date();
             const birthDate = new Date(dateOfBirth);
@@ -150,17 +454,17 @@
             }
             return age;
         }
-        
+
         function passUser() {
             currentIndex++;
             displayCurrentUser();
         }
-        
+
         async function likeUser(userId) {
             try {
                 const response = await ApiService.likeUser(userId);
                 showAlert('success', response.message || 'Đã thích người dùng!');
-                
+
                 if (response.message && response.message.includes('ghép đôi')) {
                     setTimeout(() => {
                         window.location.href = '/Customer/Matches';
@@ -173,7 +477,7 @@
                 showAlert('error', 'Lỗi: ' + error.message);
             }
         }
-        
+
         function showAlert(type, message) {
             const alertContainer = document.getElementById('alertContainer');
             const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
@@ -184,9 +488,8 @@
                 </div>
             `;
         }
-        
+
         // Load on page load
         loadRecommendations();
     </script>
 }
-
